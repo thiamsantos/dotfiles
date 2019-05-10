@@ -5,6 +5,8 @@
 ```sh
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 $ sudo​ apt-get​ install​ xclip
+$ git clone git@github.com:thiamsantos/dotfiles.git /path/to/repo/dotfiles
+$ ln -s /path/to/repo/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ```
 
 Prefix: `Ctrl - a`
