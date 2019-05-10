@@ -20,6 +20,16 @@ Prefix: `Ctrl - a`
 - `Prefix q` - Kill pane
 - `Prefix I` - Installs plugins
 - `Prefix w` - Display panes
+- `Prefix b` - Previous window
+- `Prefix Q` - Kill window
+
+## Common shortcuts
+
+- `Prefix c` - New window
+- `Prefix n` - Next window
+- `Prefix 0-9` - Go to window 0-9
+- `Prefix f` - Find window
+- `Prefix ,` - Rename window
 
 ### Copy mode
 
