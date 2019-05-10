@@ -22,6 +22,7 @@ Prefix: `Ctrl - a`
 - `Prefix w` - Display panes
 - `Prefix b` - Previous window
 - `Prefix Q` - Kill window
+- `Prefix X` - Kill session
 
 ## Common shortcuts
 
