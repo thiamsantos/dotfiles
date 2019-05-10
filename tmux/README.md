@@ -19,6 +19,7 @@ Prefix: `Ctrl - a`
 - `Prefix o` - Open/maximize pane
 - `Prefix q` - Kill pane
 - `Prefix I` - Installs plugins
+- `Prefix w` - Display panes
 
 ### Copy mode
 
