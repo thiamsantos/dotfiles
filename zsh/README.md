@@ -7,6 +7,7 @@ $ apt install zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 $ curl -fsSL https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
+$ curl https://sh.rustup.rs -sSf | sh
 $ npm install --global pure-prompt
 $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
@@ -35,6 +36,7 @@ $ ln -s /path/to/repo/dotfiles/zsh/zshrc ~/.zshrc
 ## Aliases
 
 - `ga` - `git add`
+- `gap` - `git add -p`
 - `gc` - `git commit -m`
 - `gm` - `git merge`
 - `gck` - `git checkout`
@@ -47,5 +49,4 @@ $ ln -s /path/to/repo/dotfiles/zsh/zshrc ~/.zshrc
 ## TODO
 
 - [ ] java installation
-- [ ] rust installation
 - [ ] go installation
