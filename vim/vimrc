@@ -1,0 +1,12 @@
+" Absolute line numbers
+set nu
+
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Disable Page up/down keys
+noremap <PageUp> <Nop>
+noremap <PageDown> <Nop>
