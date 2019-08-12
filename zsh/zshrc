@@ -32,14 +32,6 @@ eval "$(rbenv init -)"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# java
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
-export PATH="$PATH:/opt/gradle/gradle-4.8.1/bin"
-export PATH="$PATH:$JAVA_HOME/bin"
-
-# rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # go
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"

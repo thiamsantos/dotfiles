@@ -5,15 +5,24 @@
 ```sh
 $ apt install zsh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+$ nvm install --lts
 $ curl -fsSL https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
-$ curl https://sh.rustup.rs -sSf | sh
 $ npm install --global pure-prompt
 $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+$ mkdir -p "$(rbenv root)"/plugins
+$ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+$ apt install build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
+$ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+$ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 $ apt install tmux
 $ gem install tmuxinator
+$ mkdir -p $HOME/bin
+$ curl -0 $HOME/bin/tmuxinator.zsh https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
 $ git clone git@github.com:thiamsantos/dotfiles.git /path/to/repo/dotfiles
 $ ln -s /path/to/repo/dotfiles/zsh/zshrc ~/.zshrc
 ```
