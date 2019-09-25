@@ -20,6 +20,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+nvm alias default 10.16.3 > /dev/null
+
 # yvm
 export YVM_DIR=$HOME/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
@@ -47,6 +49,9 @@ export EDITOR="vim"
 # bind home/end keys
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+
+# confluent kafka
+export PATH="$PATH:$HOME/confluent/bin"
 
 # aliases
 alias ga="git add"
