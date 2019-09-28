@@ -55,6 +55,7 @@ $ ln -s /path/to/repo/dotfiles/zsh/zshrc ~/.zshrc
 - `gpf` - ` git push origin HEAD --force-with-lease`
 - `gb` - `git checkout -b`
 - `gsync` - `gck master && gpl && gck - && gm master`
+- `gs` - `git status`
 
 ## TODO
 

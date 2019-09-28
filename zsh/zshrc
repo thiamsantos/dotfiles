@@ -64,6 +64,7 @@ alias gp="git push origin HEAD"
 alias gpf=" git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
 alias gsync="gck master && gpl && gck - && gm master"
+alias gs="git status"
 
 # tmuxinator
 source $HOME/bin/tmuxinator.zsh

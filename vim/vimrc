@@ -1,5 +1,30 @@
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+Plug 'vim-airline/vim-airline'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-eunuch'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+
+call plug#end()
+
 " Absolute line numbers
 set nu
+
+" Disable swap files
+set noswapfile
+
+" Disable compatible mode
+set nocompatible
+
+" Enable hidden
+set hidden
+
+" Disable tabline
+set showtabline=0
 
 " Disable arrow keys
 noremap <Up> <Nop>
@@ -10,3 +35,9 @@ noremap <Right> <Nop>
 " Disable Page up/down keys
 noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
+
+map <c-f> :Ag<CR>
+
+nnoremap <silent><C-p> :CtrlSpace O<CR>
+
+let g:strip_whitespace_on_save=1
