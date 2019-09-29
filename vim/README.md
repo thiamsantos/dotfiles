@@ -22,3 +22,4 @@ $ ln -s /path/to/repo/dotfiles/vim/vimrc ~/.vimrc
 - https://github.com/tpope/vim-eunuch
 - https://github.com/ntpeters/vim-better-whitespace
 - https://github.com/vim-ctrlspace/vim-ctrlspace
+- https://github.com/gosukiwi/vim-atom-dark
