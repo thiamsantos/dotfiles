@@ -1,5 +1,7 @@
 call plug#begin()
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
@@ -7,7 +9,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-eunuch'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'vim-ctrlspace/vim-ctrlspace'
 
 call plug#end()
 
@@ -16,15 +17,6 @@ set nu
 
 " Disable swap files
 set noswapfile
-
-" Disable compatible mode
-set nocompatible
-
-" Enable hidden
-set hidden
-
-" Disable tabline
-set showtabline=0
 
 " Disable arrow keys
 noremap <Up> <Nop>
@@ -36,8 +28,8 @@ noremap <Right> <Nop>
 noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
 
-map <c-f> :Ag<CR>
-
-nnoremap <silent><C-p> :CtrlSpace O<CR>
+let mapleader="\\"
+map <Leader>p :FZF<CR>
+map <Leader>f :Ag<CR>
 
 let g:strip_whitespace_on_save=1
