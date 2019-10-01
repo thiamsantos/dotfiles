@@ -1,0 +1,13 @@
+{
+	"languageserver": {
+		"elixirLS" : {
+			"command": "~/elixir-ls/release/language_server.sh",
+			"filetypes": ["elixir", "eelixir"]
+		},
+		"dockerfile": {
+			"command": "docker-langserver",
+			"filetypes": ["dockerfile"],
+			"args": ["--stdio"]
+		}
+	}
+}
