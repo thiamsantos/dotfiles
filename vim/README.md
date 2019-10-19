@@ -41,7 +41,6 @@ $ ln -s /path/to/repo/dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
 - https://github.com/neoclide/coc-yaml
 - https://github.com/neoclide/coc-solargraph
 - https://github.com/rcjsuen/dockerfile-language-server-nodejs
-- https://github.com/neoclide/coc-sources
 
 ```
 :CocInstall coc-json
@@ -52,7 +51,4 @@ $ ln -s /path/to/repo/dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
 :CocInstall coc-flow
 :CocInstall coc-yaml
 :CocInstall coc-solargraph
-:CocInstall coc-dictionary
-:CocInstall coc-word
-:CocInstall coc-omni
 ```
