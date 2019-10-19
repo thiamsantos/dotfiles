@@ -26,39 +26,14 @@ call plug#end()
 
 syntax on
 
+" Use colors that look good on a dark background
 set background=dark
+
 " Absolute line numbers
 set nu
 
 " Disable swap files
 set noswapfile
-
-" Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" Disable Page up/down keys
-noremap <PageUp> <Nop>
-noremap <PageDown> <Nop>
-
-let mapleader="\\"
-map <Leader>p :FZF<CR>
-map <Leader>f :Ag<CR>
-
-let g:strip_whitespace_on_save=1
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-
-let g:indent_guides_enable_on_vm_startup = 1
-
-let g:airline#extensions#tabline#enabled = 1
-
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" if hidden is not set, TextEdit might fail.
-set hidden
 
 " Some servers have issues with backup files, see #649
 set nobackup
@@ -73,6 +48,28 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+let test#strategy = "dispatch"
+let mapleader="\\"
+let g:strip_whitespace_on_save=1
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+let g:indent_guides_enable_on_vm_startup = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Disable Page up/down keys
+noremap <PageUp> <Nop>
+noremap <PageDown> <Nop>
+
+map <Leader>p :FZF<CR>
+map <Leader>f :Ag<CR>
+
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -80,17 +77,13 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <leader>h :bprevious<cr>
+nmap <leader>q :bdelete<cr>
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-let test#strategy = "dispatch"
-
-nmap <leader>t :enew<cr>
-nmap <leader>l :bnext<cr>
-nmap <leader>h :bprevious<cr>
-nmap <leader>q :bdelete<cr>
