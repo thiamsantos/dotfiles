@@ -12,14 +12,14 @@ $ nvm install --lts
 $ curl -fsSL https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
 $ npm install --global pure-prompt
 $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-$ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-$ mkdir -p "$(rbenv root)"/plugins
 $ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-$ sudo apt install build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
+$ sudo apt install build-essential autoconf bison m4 libssl-dev libyaml-dev libncurses5-dev libreadline6-dev zlib1g-dev libffi-dev libgdbm-dev libgdbm5 libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop
 $ . $HOME/.asdf/asdf.sh
 $ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 $ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+$ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+$ echo "legacy_version_file = yes" > $HOME/.asdfrc
 $ sudo apt install tmux
 $ gem install tmuxinator
 $ mkdir -p $HOME/bin
