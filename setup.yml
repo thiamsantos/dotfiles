@@ -2,7 +2,6 @@
 - name: Setup
   hosts: 127.0.0.1
   connection: local
-  user: thiago
   become: true
   become_user: root
   tasks:
