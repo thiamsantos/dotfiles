@@ -41,10 +41,15 @@
         state: present
 
     - name: Add Spotify repository
-      apt_repository: repo='deb http://repository.spotify.com stable non-free'
+      apt_repository: 
+        repo: deb http://repository.spotify.com stable non-free
+        filename: spotify-client
+        state: present
 
     - name: Install spotify
-      apt: name=spotify-client update_cache=yes state=latest
+      apt:
+       name: spotify-client
+       state: present
 
     - name: Add chrome signing key
       apt_key:
@@ -52,10 +57,15 @@
         state: present
 
     - name: Add chrome repository
-      apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+      apt_repository: 
+        repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+        filename: google-chrome
+        state: present
 
     - name: Install chrome
-      apt: name=google-chrome-stable update_cache=yes state=latest
+      apt: 
+        name: google-chrome-stable 
+        state: present
 
     - name: zoom dependencies
       apt:
