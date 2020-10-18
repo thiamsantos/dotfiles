@@ -1,0 +1,7 @@
+---
+- name: Setup
+  hosts: local
+  user: thiago
+  tasks:
+    - name: validate
+      shell: 'ls' 
