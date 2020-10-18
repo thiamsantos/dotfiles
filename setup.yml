@@ -1,7 +1,59 @@
 ---
 - name: Setup
-  hosts: local
+  hosts: 127.0.0.1
+  connection: local
   user: thiago
+  become: true
+  become_user: root
   tasks:
-    - name: validate
-      shell: 'ls' 
+    - name: Install basepackages
+      apt:
+        name:
+          - xclip
+          - vim
+          - fzf
+          - tmux
+        state: present
+
+    - name: asdf erlang deps
+      apt:
+        name:
+          - build-essential 
+          - autoconf 
+          - m4 
+          - libncurses5-dev 
+          - libwxgtk3.0-gtk3-dev 
+          - libgl1-mesa-dev 
+          - libglu1-mesa-dev 
+          - libpng-dev 
+          - libssh-dev 
+          - unixodbc-dev 
+          - xsltproc 
+          - fop 
+          - libxml2-utils 
+          - libncurses-dev 
+          - openjdk-11-jdk
+        state: present
+
+    - name: Add spotify signing key
+      apt_key:
+        url: https://download.spotify.com/debian/pubkey_0D811D58.gpg
+        state: present
+
+    - name: Add Spotify repository
+      apt_repository: repo='deb http://repository.spotify.com stable non-free'
+
+    - name: Install spotify
+      apt: name=spotify-client update_cache=yes state=latest
+
+    - name: Add chrome signing key
+      apt_key:
+        url: https://dl-ssl.google.com/linux/linux_signing_key.pub        
+        state: present
+
+    - name: Add chrome repository
+      apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main'
+
+    - name: Install chrome
+      apt: name=google-chrome-stable update_cache=yes state=latest
+

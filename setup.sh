@@ -21,4 +21,5 @@ cd $DOTFILES
 git pull --rebase
 # TODO remove after migration to ansible
 git checkout ansible
+ansible-playbook -vvv -K -i hosts "$DOTFILES/setup.yml"
 
