@@ -143,5 +143,5 @@
     - name: Copy file with owner and permissions
       become: no
       copy:
-        src: $HOME/dev/thiamsantos/dotfiles/files/asdfrc
-        dest: $HOME/.asdfrc
+        src: /home/thiago/dev/thiamsantos/dotfiles/files/asdfrc
+        dest: /home/thiago/.asdfrc
