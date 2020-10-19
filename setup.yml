@@ -14,26 +14,6 @@
           - tmux
         state: present
 
-    - name: asdf erlang deps
-      apt:
-        name:
-          - build-essential 
-          - autoconf 
-          - m4 
-          - libncurses5-dev 
-          - libwxgtk3.0-gtk3-dev 
-          - libgl1-mesa-dev 
-          - libglu1-mesa-dev 
-          - libpng-dev 
-          - libssh-dev 
-          - unixodbc-dev 
-          - xsltproc 
-          - fop 
-          - libxml2-utils 
-          - libncurses-dev 
-          - openjdk-11-jdk
-        state: present
-
     - name: Add spotify signing key
       apt_key:
         url: https://download.spotify.com/debian/pubkey_0D811D58.gpg
@@ -93,3 +73,75 @@
       apt: 
         deb: https://zoom.us/client/latest/zoom_amd64.deb
 
+    - name: Install asdf
+      become: no
+      command: git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.0
+      args:
+        creates: $HOME/.asdf/asdf.sh
+
+    - name: asdf erlang deps
+      apt:
+        name:
+          - build-essential 
+          - autoconf 
+          - m4 
+          - libncurses5-dev 
+          - libwxgtk3.0-gtk3-dev 
+          - libgl1-mesa-dev 
+          - libglu1-mesa-dev 
+          - libpng-dev 
+          - libssh-dev 
+          - unixodbc-dev 
+          - xsltproc 
+          - fop 
+          - libxml2-utils 
+          - libncurses-dev 
+          - openjdk-11-jdk
+        state: present
+
+    - name: Install asdf erlang
+      become: no
+      command: $HOME/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+      args:
+        creates: $HOME/.asdf/plugins/erlang
+    
+    - name: asdf elixir deps
+      apt: 
+       name: 
+         - unzip
+       state: present
+
+    - name: Install asdf elixir
+      become: no
+      command: $HOME/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+      args:
+        creates: $HOME/.asdf/plugins/elixir
+
+    - name: asdf ruby deps
+      apt:
+       name:
+         - autoconf 
+         - bison 
+         - build-essential 
+         - libssl-dev 
+         - libyaml-dev 
+         - libreadline6-dev 
+         - zlib1g-dev 
+         - libncurses5-dev 
+         - libffi-dev 
+         - libgdbm6 
+         - libgdbm-dev 
+         - libdb-dev
+       state: present
+
+    - name: install asdf ruby
+      become: no
+      command: $HOME/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+      args:
+        creates: $HOME/.asdf/plugins/ruby
+
+    - name: Copy file with owner and permissions
+      become: no
+      copy:
+        src: $HOME/dev/thiamsantos/dotfiles/files/asdfrc
+        dest: $HOME/.asdfrc
