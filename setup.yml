@@ -4,6 +4,8 @@
   connection: local
   become: true
   become_user: root
+  environment:
+    HOME: '/home/thiago'
   tasks:
     - name: Install basepackages
       apt:
@@ -145,3 +147,10 @@
       copy:
         src: /home/thiago/dev/thiamsantos/dotfiles/files/asdfrc
         dest: /home/thiago/.asdfrc
+
+    - name: Install nvm
+      shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+
