@@ -16,7 +16,6 @@
         name:
           - xclip
           - vim
-          - tmux
         state: present
 
     - name: Add spotify signing key
@@ -212,3 +211,21 @@
         dest: /usr/local
         copy: no
         creates: /usr/local/go
+
+    - name: Install tmux
+      apt:
+        name: tmux
+        state: present
+
+    - name: Install tmux plugin manager
+      become: no
+      shell: mkdir -p $HOME/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+      args:
+        creates: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+
+    - name: Setup tmux.conf
+      become: no
+      file:
+        src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/tmux.conf"
+        dest: "{{ ansible_env.HOME }}/.tmux.conf"
+        state: link
