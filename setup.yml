@@ -212,10 +212,47 @@
         copy: no
         creates: /usr/local/go
 
-    - name: Install tmux
+    - name: Install tmux deps
       apt:
-        name: tmux
+        name:
+          - libevent-dev
+          - ncurses-dev
+          - build-essential
+          - bison
+          - pkg-config
         state: present
+
+    - name: Create local folder
+      become: no
+      file:
+        path: /home/thiago/local/src
+        state: directory
+
+    - name: Create bin folder
+      become: no
+      file: 
+        path: /home/thiago/bin
+        state: directory
+     
+    - name: Download the tmux tarball
+      become: no
+      get_url: 
+        url: https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
+        dest: /home/thiago/local/src/tmux-2.6.tar.gz
+       
+    - name: Extract tmux tarball
+      become: no
+      unarchive:
+        src: /home/thiago/local/src/tmux-2.6.tar.gz 
+        dest: /home/thiago/local
+        copy: no
+        creates: /home/thiago/local/tmux-2.6
+     
+    - name: Build tmux
+      become: no
+      shell: cd /home/thiago/local/tmux-2.6 && ./configure --prefix=/home/thiago && make && make install
+      args:
+        creates: /home/thiago/bin/tmux
 
     - name: Install tmux plugin manager
       become: no
@@ -229,3 +266,51 @@
         src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/tmux.conf"
         dest: "{{ ansible_env.HOME }}/.tmux.conf"
         state: link
+
+    - name: Remove old docker
+      apt:
+        name:
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
+          - runc
+        state: absent
+
+    - name: Add docker apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add specified repository into sources list using specified filename
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+        filename: docker
+
+    - name: Install docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+
+    - name: Ensure group docker exists
+      group:
+        name: docker
+        state: present
+
+    - name: Add thiago to docker group
+      user:
+        name: thiago
+        groups: docker
+        append: yes
+
+    - name: Download the docker compose
+      become: no
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+        dest: /home/thiago/bin/docker-compose
+        mode: 'a+x'
+        checksum: sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e3b9d9aa8de633286d
