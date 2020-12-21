@@ -11,7 +11,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rstacruz/vim-closer'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-dispatch'
@@ -75,13 +74,6 @@ noremap <PageDown> <Nop>
 
 map <Leader>p :FZF<CR>
 map <Leader>f :Ag<CR>
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()

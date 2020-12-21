@@ -336,6 +336,17 @@
       args:
         creates: "{{ ansible_env.HOME }}/.zsh/pure"
 
+    - name: Install ag
+      apt: 
+        name: silversearcher-ag
+        state: present
+
+    - name: Download vim plug
+      become: no
+      shell: curl -fLo "{{ ansible_env.HOME }}/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      args:
+        creates: "{{ ansible_env.HOME }}/.vim/autoload/plug.vim"
+
     - name: Setup vimrc
       become: no
       file:
