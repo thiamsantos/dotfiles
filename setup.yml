@@ -329,3 +329,9 @@
         src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/zshrc"
         dest: "{{ ansible_env.HOME }}/.zshrc"
         state: link
+
+    - name: Install pure prompt
+      become: no
+      shell: mkdir -p "{{ ansible_env.HOME }}/.zsh" && git clone https://github.com/sindresorhus/pure.git "{{ ansible_env.HOME }}/.zsh/pure"
+      args:
+        creates: "{{ ansible_env.HOME }}/.zsh/pure"
