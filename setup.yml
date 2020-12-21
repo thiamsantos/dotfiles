@@ -335,3 +335,12 @@
       shell: mkdir -p "{{ ansible_env.HOME }}/.zsh" && git clone https://github.com/sindresorhus/pure.git "{{ ansible_env.HOME }}/.zsh/pure"
       args:
         creates: "{{ ansible_env.HOME }}/.zsh/pure"
+
+    - name: Setup vimrc
+      become: no
+      file:
+        src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/vimrc"
+        dest: "{{ ansible_env.HOME }}/.vimrc"
+        state: link
+
+

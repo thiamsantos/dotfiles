@@ -74,7 +74,7 @@ bindkey "${terminfo[kend]}" end-of-line
 alias ga="git add"
 alias gap="git add -p"
 alias gc="git commit -m"
-alias gca="git commit --amend"
+alias gca="git commit --amend --no-edit"
 alias gm="git merge"
 alias gck="git checkout"
 alias gpl="git pull --rebase"
