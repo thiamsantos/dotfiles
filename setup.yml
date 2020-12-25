@@ -24,7 +24,7 @@
         state: present
 
     - name: Add Spotify repository
-      apt_repository: 
+      apt_repository:
         repo: deb http://repository.spotify.com stable non-free
         filename: spotify-client
         state: present
@@ -36,18 +36,18 @@
 
     - name: Add chrome signing key
       apt_key:
-        url: https://dl-ssl.google.com/linux/linux_signing_key.pub        
+        url: https://dl-ssl.google.com/linux/linux_signing_key.pub
         state: present
 
     - name: Add chrome repository
-      apt_repository: 
+      apt_repository:
         repo: deb http://dl.google.com/linux/chrome/deb/ stable main
         filename: google-chrome
         state: present
 
     - name: Install chrome
-      apt: 
-        name: google-chrome-stable 
+      apt:
+        name: google-chrome-stable
         state: present
 
     - name: zoom dependencies
@@ -74,75 +74,75 @@
         state: present
 
     - name: Install zoom
-      apt: 
+      apt:
         deb: https://zoom.us/client/latest/zoom_amd64.deb
 
     - name: Install asdf
       become: no
-      command: git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.0
+      command: "git clone https://github.com/asdf-vm/asdf.git {{ ansible_env.HOME }}/.asdf --branch v0.8.0"
       args:
-        creates: $HOME/.asdf/asdf.sh
+        creates: "{{ ansible_env.HOME }}/.asdf/asdf.sh"
 
     - name: asdf erlang deps
       apt:
         name:
-          - build-essential 
-          - autoconf 
-          - m4 
-          - libncurses5-dev 
-          - libwxgtk3.0-gtk3-dev 
-          - libgl1-mesa-dev 
-          - libglu1-mesa-dev 
-          - libpng-dev 
-          - libssh-dev 
-          - unixodbc-dev 
-          - xsltproc 
-          - fop 
-          - libxml2-utils 
-          - libncurses-dev 
+          - build-essential
+          - autoconf
+          - m4
+          - libncurses5-dev
+          - libwxgtk3.0-gtk3-dev
+          - libgl1-mesa-dev
+          - libglu1-mesa-dev
+          - libpng-dev
+          - libssh-dev
+          - unixodbc-dev
+          - xsltproc
+          - fop
+          - libxml2-utils
+          - libncurses-dev
           - openjdk-11-jdk
         state: present
 
     - name: Install asdf erlang
       become: no
-      command: $HOME/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+      command: "{{ ansible_env.HOME }}/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git"
       args:
-        creates: $HOME/.asdf/plugins/erlang
-    
+        creates: "{{ ansible_env.HOME }}/.asdf/plugins/erlang"
+
     - name: asdf elixir deps
-      apt: 
-       name: 
+      apt:
+       name:
          - unzip
        state: present
 
     - name: Install asdf elixir
       become: no
-      command: $HOME/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+      command: "{{ ansible_env.HOME }}/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
       args:
-        creates: $HOME/.asdf/plugins/elixir
+        creates: "{{ ansible_env.HOME }}/.asdf/plugins/elixir"
 
     - name: asdf ruby deps
       apt:
        name:
-         - autoconf 
-         - bison 
-         - build-essential 
-         - libssl-dev 
-         - libyaml-dev 
-         - libreadline6-dev 
-         - zlib1g-dev 
-         - libncurses5-dev 
-         - libffi-dev 
-         - libgdbm6 
-         - libgdbm-dev 
+         - autoconf
+         - bison
+         - build-essential
+         - libssl-dev
+         - libyaml-dev
+         - libreadline6-dev
+         - zlib1g-dev
+         - libncurses5-dev
+         - libffi-dev
+         - libgdbm6
+         - libgdbm-dev
          - libdb-dev
        state: present
 
     - name: install asdf ruby
       become: no
-      command: $HOME/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+      command: "{{ ansible_env.HOME }}/.asdf/bin/asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git"
       args:
-        creates: $HOME/.asdf/plugins/ruby
+        creates: "{{ ansible_env.HOME }}/.asdf/plugins/ruby"
 
     - name: Copy file with owner and permissions
       become: no
@@ -158,25 +158,25 @@
 
     - name: Install node lts
       become: no
-      shell: . $HOME/.nvm/nvm.sh && nvm install 12.19.0
+      shell: ". {{ ansible_env.HOME }}.nvm/nvm.sh && nvm install 12.19.0"
       args:
         creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v12.19.0"
 
     - name: Install fzf
       become: no
-      shell: git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install
+      shell: "git clone --depth 1 https://github.com/junegunn/fzf.git {{ ansible_env.HOME }}/.fzf && {{ ansible_env.HOME }}/.fzf/install"
       args:
         creates: "{{ ansible_env.HOME }}/.fzf/bin/fzf"
 
     - name: Change .config folder permission
       file:
-        path: $HOME/.config
+        path: "{{ ansible_env.HOME }}/.config"
         owner: "thiago"
         group: "thiago"
 
     - name: Install yvm
       become: no
-      shell: . $HOME/.nvm/nvm.sh && nvm use 12.19.0 && curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node
+      shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use 12.19.0 && curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node"
       args:
         creates: "{{ ansible_env.HOME }}/.yvm/yvm.sh"
 
@@ -184,11 +184,11 @@
       apt:
         name: vlc
         state: present
-    
+
     - name: Install bluetooth tool
       apt:
         name:
-          - bluez 
+          - bluez
           - bluez-tools
           - blueman
         state: present
@@ -230,7 +230,7 @@
 
     - name: Create bin folder
       become: no
-      file: 
+      file:
         path: /home/thiago/bin
         state: directory
 
@@ -238,10 +238,10 @@
       apt:
        name: tmux
        state: present
-     
+
     - name: Install tmux plugin manager
       become: no
-      shell: mkdir -p $HOME/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+      shell: "mkdir -p {{ ansible_env.HOME }}/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm {{ ansible_env.HOME }}/.tmux/plugins/tpm"
       args:
         creates: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
 
@@ -301,7 +301,7 @@
         checksum: sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e3b9d9aa8de633286d
 
     - name: Install zsh
-      apt: 
+      apt:
         name: zsh
         state: present
 
@@ -320,7 +320,7 @@
     - name: Install zsh-autosuggestions
       become: no
       shell: "git clone https://github.com/zsh-users/zsh-autosuggestions {{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-      args: 
+      args:
         creates: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
     - name: Setup zshrc
@@ -337,7 +337,7 @@
         creates: "{{ ansible_env.HOME }}/.zsh/pure"
 
     - name: Install ag
-      apt: 
+      apt:
         name: silversearcher-ag
         state: present
 
