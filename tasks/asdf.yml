@@ -70,5 +70,4 @@
   become: no
   copy:
     src: /home/thiago/dev/thiamsantos/dotfiles/files/asdfrc
-    dest: /home/thiago/.asdfrc
-
+    dest: "{{ ansible_env.HOME }}/.asdfrc"
