@@ -37,7 +37,7 @@
 
 - name: Install fzf
   become: no
-  shell: "git clone --depth 1 https://github.com/junegunn/fzf.git {{ ansible_env.HOME }}/.fzf && {{ ansible_env.HOME }}/.fzf/install"
+  shell: "git clone --depth 1 https://github.com/junegunn/fzf.git {{ ansible_env.HOME }}/.fzf && {{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-bash --no-fish"
   args:
     creates: "{{ ansible_env.HOME }}/.fzf/bin/fzf"
 
