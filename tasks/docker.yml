@@ -1,0 +1,49 @@
+---
+- name: Remove old docker
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+
+- name: Add docker apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add specified repository into sources list using specified filename
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+    filename: docker
+
+- name: Install docker
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: Ensure group docker exists
+  group:
+    name: docker
+    state: present
+
+- name: Add thiago to docker group
+  user:
+    name: thiago
+    groups: docker
+    append: yes
+
+- name: Download the docker compose
+  become: no
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
+    dest: "{{ ansible_env.HOME }}/bin/docker-compose"
+    mode: 'a+x'
+    checksum: sha256:04216d65ce0cd3c27223eab035abfeb20a8bef20259398e3b9d9aa8de633286d
+

@@ -1,0 +1,26 @@
+---
+- name: Install xclip
+  apt:
+    name:
+      - xclip
+    state: present
+
+- name: Create bin folder
+  become: no
+  file:
+    path: /home/thiago/bin
+    state: directory
+
+- name: Install vlc
+  apt:
+    name: vlc
+    state: present
+
+- name: Install bluetooth tool
+  apt:
+    name:
+      - bluez
+      - bluez-tools
+      - blueman
+    state: present
+

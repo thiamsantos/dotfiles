@@ -1,0 +1,25 @@
+---
+- name: Install nvm
+  become: no
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Install node lts
+  become: no
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 12.19.0"
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v12.19.0"
+
+- name: Change .config folder permission (used by npm)
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    owner: "thiago"
+    group: "thiago"
+
+- name: Install yvm
+  become: no
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm use 12.19.0 && curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node"
+  args:
+    creates: "{{ ansible_env.HOME }}/.yvm/yvm.sh"
+
