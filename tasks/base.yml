@@ -8,7 +8,7 @@
 - name: Create bin folder
   become: no
   file:
-    path: /home/thiago/bin
+    path: "{{ ansible_env.HOME }}/bin"
     state: directory
 
 - name: Install vlc
@@ -23,4 +23,3 @@
       - bluez-tools
       - blueman
     state: present
-
