@@ -1,9 +1,11 @@
 # dotfiles
 
-My personal dotfiles
+[Ansible](https://www.ansible.com/) setup for my local enviroment.
+
 ```sh
-$ git config --global user.name "Thiago Santos"
-$ git config --global user.email thia.mdossantos@gmail.com
+# TODO remove custom branch merge
+$ curl -o- https://raw.githubusercontent.com/thiamsantos/dotfiles/ansible/setup.sh | bash
+```
 
 ## Software included
 
@@ -60,13 +62,15 @@ Prefix: `Ctrl - a`
 - `v` - Start selection
 - `y` - Copy selection
 
-## terminal config
+## Mate Terminal Config
 
-monospace regular 14
-
+font = monospace regular 14
 text color = #FFFFFF
 background color = #1D1F21
 
+### Colors
+
+```
 1 - #1D1F21
 2 - #CD0000
 3 - #00CD00
@@ -82,4 +86,5 @@ background color = #1D1F21
 13 - #4682B4
 14 - #FF00FF
 15 - #00FFFF
-16 - #FFFFFF```
+16 - #FFFFFF
+```
