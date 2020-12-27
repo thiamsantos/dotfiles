@@ -16,7 +16,7 @@
 
 - name: Install tmux plugin manager
   become: no
-  shell: "mkdir -p {{ ansible_env.HOME }}/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm {{ ansible_env.HOME }}/.tmux/plugins/tpm"
+  shell: "mkdir -p {{ ansible_env.HOME }}/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm {{ ansible_env.HOME }}/.tmux/plugins/tpm && {{ ansible_env.HOME }}/.tmux/plugins/tpm/bin/install_plugins"
   args:
     creates: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
 
