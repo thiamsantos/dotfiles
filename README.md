@@ -1,10 +1,11 @@
 # dotfiles
 
 [Ansible](https://www.ansible.com/) setup for my local enviroment.
+Tested with [Linux Mint 20 “Ulyana” MATE](https://blog.linuxmint.com/?p=3929).
 
 ```sh
 # TODO remove custom branch merge
-$ curl -o- https://raw.githubusercontent.com/thiamsantos/dotfiles/ansible/setup.sh | bash
+$ curl -s https://raw.githubusercontent.com/thiamsantos/dotfiles/ansible/setup.sh | sh
 ```
 
 ## Software included

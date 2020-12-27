@@ -69,5 +69,5 @@
 - name: Setup asdf configuration
   become: no
   copy:
-    src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/asdfrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/files/asdfrc"
     dest: "{{ ansible_env.HOME }}/.asdfrc"

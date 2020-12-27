@@ -18,7 +18,6 @@
 - name: Setup vimrc
   become: no
   file:
-    src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/vimrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/files/vimrc"
     dest: "{{ ansible_env.HOME }}/.vimrc"
     state: link
-

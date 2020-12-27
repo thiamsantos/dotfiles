@@ -8,18 +8,14 @@ git config --global user.name "Thiago Santos" && \
 sudo apt update && \
 	sudo apt install --yes git ansible
 
-WORKSPACE="$HOME/dev/thiamsantos"
-DOTFILES="$WORKSPACE/dotfiles"
+DOTFILES="$HOME/dotfiles"
 
 if [ ! -d $DOTFILES ]; then
-    mkdir -p $WORKSPACE
-    cd $WORKSPACE
-    git clone git@github.com:thiamsantos/dotfiles.git
+    git clone git@github.com:thiamsantos/dotfiles.git $DOTFILES
 fi
 
 cd $DOTFILES
 git pull --rebase
 # TODO remove after migration to ansible
 git checkout ansible
-ansible-playbook -vvv -K -i hosts "$DOTFILES/setup.yml"
-
+ansible-playbook -K -i hosts "$DOTFILES/setup.yml"

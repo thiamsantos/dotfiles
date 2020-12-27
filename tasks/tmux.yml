@@ -23,7 +23,6 @@
 - name: Setup tmux.conf
   become: no
   file:
-    src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/tmux.conf"
+    src: "{{ ansible_env.HOME }}/dotfiles/files/tmux.conf"
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
     state: link
-

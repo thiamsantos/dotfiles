@@ -12,7 +12,7 @@
 - name: Setup vscode settings
   become: no
   file:
-    src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/vscode-settings.json"
+    src: "{{ ansible_env.HOME }}/dotfiles/files/vscode-settings.json"
     dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
     state: link
 
@@ -69,4 +69,3 @@
   shell: code --install-extension redhat.vscode-yaml@0.13.0
   args:
     creates: "{{ ansible_env.HOME }}/.vscode/extensions/redhat.vscode-yaml-0.13.0"
-

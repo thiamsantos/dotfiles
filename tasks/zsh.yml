@@ -25,7 +25,7 @@
 - name: Setup zshrc
   become: no
   file:
-    src: "{{ ansible_env.HOME }}/dev/thiamsantos/dotfiles/files/zshrc"
+    src: "{{ ansible_env.HOME }}/dotfiles/files/zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
 
