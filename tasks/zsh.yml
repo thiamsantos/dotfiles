@@ -41,3 +41,7 @@
   args:
     creates: "{{ ansible_env.HOME }}/.fzf/bin/fzf"
 
+- name: zsh as default shell
+  user:
+    name: "thiago"
+    shell: /bin/zsh
