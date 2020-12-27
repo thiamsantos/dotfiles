@@ -23,4 +23,4 @@
     - include: tasks/docker.yml
     - include: tasks/zsh.yml
     - include: tasks/vim.yml
-
+    - include: tasks/vscode.yml

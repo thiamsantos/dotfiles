@@ -1,0 +1,34 @@
+{
+  "workbench.colorTheme": "Material Syntax - Dark",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1e1e1e"
+  },
+  "window.menuBarVisibility": "toggle",
+  "editor.wordWrap": "on",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.tabSize": 2,
+  "breadcrumbs.enabled": false,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.watcherExclude": {
+  "**/_build/*/**": true,
+    "**/deps/*/**": true
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "window.zoomLevel": 0,
+  "files.associations": {
+    "*.avsc": "jsonc",
+    "*.erb": "html",
+    ".env.local": "shellscript"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.enableSmartCommit": true,
+  "[plaintext]": {},
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.largeFileOptimizations": false,
+  "files.trimTrailingWhitespace": true
+}
+
