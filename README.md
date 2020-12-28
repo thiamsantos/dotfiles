@@ -4,8 +4,7 @@
 Tested with [Linux Mint 20 “Ulyana” MATE](https://blog.linuxmint.com/?p=3929).
 
 ```sh
-# TODO remove custom branch merge
-$ curl -s https://raw.githubusercontent.com/thiamsantos/dotfiles/ansible/setup.sh | sh
+$ curl -s https://raw.githubusercontent.com/thiamsantos/dotfiles/master/setup.sh | sh
 ```
 
 ## Software included
