@@ -64,9 +64,9 @@ Prefix: `Ctrl - a`
 
 ## Mate Terminal Config
 
-font = monospace regular 14
-text color = #FFFFFF
-background color = #1D1F21
+- `font = monospace regular 14`
+- `text color = #FFFFFF`
+- `background color = #1D1F21`
 
 ### Colors
 
