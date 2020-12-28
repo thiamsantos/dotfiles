@@ -1,3 +1,14 @@
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 call plug#begin()
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -11,14 +22,10 @@ Plug 'tpope/vim-eunuch'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rstacruz/vim-closer'
 Plug 'andymass/vim-matchup'
-Plug 'tpope/vim-dispatch'
-Plug 'janko/vim-test'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mhinz/vim-startify'
-Plug 'Yggdroot/indentLine'
 Plug 'google/vim-searchindex'
 Plug 'RRethy/vim-illuminate'
 
@@ -54,8 +61,6 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-let test#strategy = "dispatch"
-let mapleader="\\"
 let g:strip_whitespace_on_save=1
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
@@ -63,33 +68,3 @@ let g:indent_guides_enable_on_vm_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" Disable Page up/down keys
-noremap <PageUp> <Nop>
-noremap <PageDown> <Nop>
-
-map <Leader>p :FZF<CR>
-map <Leader>f :Ag<CR>
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-nmap <leader>h :bprevious<cr>
-nmap <leader>q :bdelete<cr>
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction

@@ -1,3 +1,5 @@
+export TERM="xterm-256color"
+export HOME="/home/thiago"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
@@ -9,9 +11,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-autoload -U promptinit; promptinit
-prompt pure > /dev/null
-
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
@@ -20,7 +19,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-nvm alias default 12.16.1 > /dev/null
+nvm alias default 12.19.0 > /dev/null
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -62,21 +61,17 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export PATH="$PATH:$HOME/bin"
-export TERM="xterm-256color"
 export EDITOR="vim"
 
 # bind home/end keys
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-# confluent kafka
-export PATH="$PATH:$HOME/confluent/bin"
-
 # aliases
 alias ga="git add"
 alias gap="git add -p"
 alias gc="git commit -m"
-alias gca="git commit --amend"
+alias gca="git commit --amend --no-edit"
 alias gm="git merge"
 alias gck="git checkout"
 alias gpl="git pull --rebase"
@@ -85,15 +80,6 @@ alias gpf=" git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
 alias gsync="gck master && gpl && gck - && gm master"
 alias gs="git status"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
-# tmuxinator
-source $HOME/bin/tmuxinator.zsh
 
 # tmux
 if [[ $DISPLAY ]]; then

@@ -1,0 +1,28 @@
+---
+- name: Install tmux deps
+  apt:
+    name:
+      - libevent-dev
+      - ncurses-dev
+      - build-essential
+      - bison
+      - pkg-config
+    state: present
+
+- name: Install tmux
+  apt:
+   name: tmux
+   state: present
+
+- name: Install tmux plugin manager
+  become: no
+  shell: "mkdir -p {{ ansible_env.HOME }}/.tmux/plugins && git clone https://github.com/tmux-plugins/tpm {{ ansible_env.HOME }}/.tmux/plugins/tpm && {{ ansible_env.HOME }}/.tmux/plugins/tpm/bin/install_plugins"
+  args:
+    creates: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+
+- name: Setup tmux.conf
+  become: no
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/files/tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link

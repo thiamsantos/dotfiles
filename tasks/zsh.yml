@@ -1,0 +1,41 @@
+---
+- name: Install zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: Install oh-my-zsh
+  become: no
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+- name: Install zsh-syntax-highlighting
+  become: no
+  shell: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git {{ ansible_env.HOME}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+  args:
+    creates: "{{ ansible_env.HOME}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+- name: Install zsh-autosuggestions
+  become: no
+  shell: "git clone https://github.com/zsh-users/zsh-autosuggestions {{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+  args:
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+- name: Setup zshrc
+  become: no
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/files/zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: link
+
+- name: Install fzf
+  become: no
+  shell: "git clone --depth 1 https://github.com/junegunn/fzf.git {{ ansible_env.HOME }}/.fzf && {{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-bash --no-fish"
+  args:
+    creates: "{{ ansible_env.HOME }}/.fzf/bin/fzf"
+
+- name: zsh as default shell
+  user:
+    name: "thiago"
+    shell: /bin/zsh
