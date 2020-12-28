@@ -28,6 +28,7 @@
     src: "{{ ansible_env.HOME }}/dotfiles/files/zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
+    force: true
 
 - name: Install fzf
   become: no
