@@ -29,12 +29,6 @@
     dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
 
-- name: Install pure prompt
-  become: no
-  shell: mkdir -p "{{ ansible_env.HOME }}/.zsh" && git clone https://github.com/sindresorhus/pure.git "{{ ansible_env.HOME }}/.zsh/pure"
-  args:
-    creates: "{{ ansible_env.HOME }}/.zsh/pure"
-
 - name: Install fzf
   become: no
   shell: "git clone --depth 1 https://github.com/junegunn/fzf.git {{ ansible_env.HOME }}/.fzf && {{ ansible_env.HOME }}/.fzf/install --all --no-update-rc --no-bash --no-fish"
