@@ -7,7 +7,7 @@
 
 - name: Install node lts
   become: no
-  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 12.19.0"
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && NVM_DIR='{{ ansible_env.HOME }}/.nvm' nvm install 12.19.0"
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v12.19.0"
 
