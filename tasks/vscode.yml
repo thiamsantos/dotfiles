@@ -1,7 +1,24 @@
 ---
+- name: Vscode dependencies
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Add vscode signing key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add vscode repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    filename: vscode
+    state: present
+
 - name: Install vscode
   apt:
-    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+    name: code
+    state: present
 
 - name: Create vscode config folder
   become: no
