@@ -22,4 +22,3 @@
   shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && NVM_DIR='{{ ansible_env.HOME }}/.nvm' nvm use 12.19.0 && curl -s https://raw.githubusercontent.com/tophat/yvm/master/scripts/install.js | node"
   args:
     creates: "{{ ansible_env.HOME }}/.yvm/yvm.sh"
-

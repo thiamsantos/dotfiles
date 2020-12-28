@@ -11,9 +11,9 @@
 
 - name: Install tmux
   apt:
-   name: tmux
-   state: present
-   
+    name: tmux
+    state: present
+
 - name: Create tmux plugins folder
   file:
     path: "{{ ansible_env.HOME }}/.tmux/plugins"
@@ -24,13 +24,13 @@
   shell: "git clone https://github.com/tmux-plugins/tpm {{ ansible_env.HOME }}/.tmux/plugins/tpm"
   args:
     creates: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
-    
+
 - name: Install tmux-plugin-sysstat
   become: no
   shell: "git clone https://github.com/samoshkin/tmux-plugin-sysstat {{ ansible_env.HOME }}/.tmux/plugins/tmux-plugin-sysstat"
   args:
     creates: "{{ ansible_env.HOME }}/.tmux/plugins/tmux-plugin-sysstat"
-    
+
 - name: Install tmux-plugin-sysstat
   become: no
   shell: "git clone https://github.com/tmux-plugins/tmux-prefix-highlight {{ ansible_env.HOME }}/.tmux/plugins/tmux-prefix-highlight"

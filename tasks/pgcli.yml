@@ -3,4 +3,3 @@
   apt:
     name: pgcli
     state: present
-

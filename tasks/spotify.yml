@@ -12,6 +12,5 @@
 
 - name: Install spotify
   apt:
-   name: spotify-client
-   state: present
-
+    name: spotify-client
+    state: present

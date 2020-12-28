@@ -33,9 +33,9 @@
 
 - name: asdf elixir deps
   apt:
-   name:
-     - unzip
-   state: present
+    name:
+      - unzip
+    state: present
 
 - name: Install asdf elixir
   become: no
@@ -45,20 +45,20 @@
 
 - name: asdf ruby deps
   apt:
-   name:
-     - autoconf
-     - bison
-     - build-essential
-     - libssl-dev
-     - libyaml-dev
-     - libreadline6-dev
-     - zlib1g-dev
-     - libncurses5-dev
-     - libffi-dev
-     - libgdbm6
-     - libgdbm-dev
-     - libdb-dev
-   state: present
+    name:
+      - autoconf
+      - bison
+      - build-essential
+      - libssl-dev
+      - libyaml-dev
+      - libreadline6-dev
+      - zlib1g-dev
+      - libncurses5-dev
+      - libffi-dev
+      - libgdbm6
+      - libgdbm-dev
+      - libdb-dev
+    state: present
 
 - name: install asdf ruby
   become: no

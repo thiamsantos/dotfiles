@@ -11,4 +11,3 @@
     dest: /usr/local
     copy: no
     creates: /usr/local/go
-

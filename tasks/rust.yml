@@ -4,4 +4,3 @@
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
   args:
     creates: "{{ ansible_env.HOME }}/.cargo/bin"
-

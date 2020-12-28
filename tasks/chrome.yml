@@ -14,4 +14,3 @@
   apt:
     name: google-chrome-stable
     state: present
-
