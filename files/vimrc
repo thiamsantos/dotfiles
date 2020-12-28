@@ -26,7 +26,6 @@ Plug 'rstacruz/vim-closer'
 Plug 'andymass/vim-matchup'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mhinz/vim-startify'
-Plug 'Yggdroot/indentLine'
 Plug 'google/vim-searchindex'
 Plug 'RRethy/vim-illuminate'
 
