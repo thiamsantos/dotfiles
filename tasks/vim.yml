@@ -8,6 +8,12 @@
   apt:
     name: silversearcher-ag
     state: present
+    
+- name: Create vim autoload folder
+  become: no
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/autoload"
+    state: directory
 
 - name: Download vim plug
   become: no
