@@ -15,6 +15,7 @@
     state: present
 
 - name: Create tmux plugins folder
+  become: no
   file:
     path: "{{ ansible_env.HOME }}/.tmux/plugins"
     state: directory
