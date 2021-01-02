@@ -26,3 +26,4 @@
     - include: tasks/vscode.yml
     - include: tasks/pgcli.yml
     - include: tasks/apt.yml
+    - include: tasks/redshift.yml

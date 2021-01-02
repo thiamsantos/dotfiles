@@ -1,0 +1,19 @@
+---
+- name: Install redshift
+  apt:
+    name:
+      - redshift
+    state: present
+
+- name: Create redshift config folder
+  become: no
+  file:
+    path: "{{ ansible_env.HOME }}/.config/redshift"
+    state: directory
+
+- name: Setup redshift.conf
+  become: no
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/files/redshift.conf"
+    dest: "{{ ansible_env.HOME }}/.config/redshift/redshift.conf"
+    state: link
