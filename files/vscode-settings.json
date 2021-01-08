@@ -29,6 +29,7 @@
   "[plaintext]": {},
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.largeFileOptimizations": false,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "editor.tokenColorCustomizations": null,
+  "workbench.preferredDarkColorTheme": "Material Syntax - Dark"
 }
-

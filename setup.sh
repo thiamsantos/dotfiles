@@ -17,4 +17,4 @@ fi
 
 cd $DOTFILES && \
   git pull --rebase && \
-  ansible-playbook -K -i hosts "$DOTFILES/setup.yml"
+  ANSIBLE_NOCOWS=1 ansible-playbook -K -i hosts "$DOTFILES/setup.yml"

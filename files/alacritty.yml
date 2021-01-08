@@ -1,0 +1,33 @@
+font:
+  normal:
+    family: monospace
+    style: Regular
+  size: 14.0
+
+colors:
+  primary:
+    background: '#1D1F21'
+    foreground: '#FFFFFF'
+  normal:
+    black:   '#1D1F21'
+    red:     '#CD0000'
+    green:   '#00CD00'
+    yellow:  '#CDCD00'
+    blue:    '#1E90FF'
+    magenta: '#CD00CD'
+    cyan:    '#00CDCD'
+    white:   '#E5E5E5'
+  bright:
+    black:   '#4C4C4C'
+    red:     '#FF0000'
+    green:   '#00FF00'
+    yellow:  '#FFFF00'
+    blue:    '#4682B4'
+    magenta: '#FF00FF'
+    cyan:    '#00FFFF'
+    white:   '#FFFFFF'
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always

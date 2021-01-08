@@ -9,6 +9,7 @@ $ curl -s https://raw.githubusercontent.com/thiamsantos/dotfiles/master/setup.sh
 
 ## Software included
 
+- [alacritty](https://github.com/alacritty/alacritty)
 - [asdf](https://github.com/asdf-vm/asdf)
 - [blueman](https://github.com/blueman-project/blueman)
 - [docker](https://www.docker.com/)
@@ -61,30 +62,3 @@ Prefix: `Ctrl - a`
 
 - `v` - Start selection
 - `y` - Copy selection
-
-## Mate Terminal Config
-
-- `font = monospace regular 14`
-- `text color = #FFFFFF`
-- `background color = #1D1F21`
-
-### Colors
-
-```
-1 - #1D1F21
-2 - #CD0000
-3 - #00CD00
-4 - #CDCD00
-5 - #1E90FF
-6 - #CD00CD
-7 - #00CDCD
-8 - #E5E5E5
-9 - #4C4C4C
-10 - #FF0000
-11 - #00FF00
-12 - #FFFF00
-13 - #4682B4
-14 - #FF00FF
-15 - #00FFFF
-16 - #FFFFFF
-```

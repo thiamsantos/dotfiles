@@ -68,6 +68,8 @@
 
 - name: Setup asdf configuration
   become: no
-  copy:
+  file:
     src: "{{ ansible_env.HOME }}/dotfiles/files/asdfrc"
     dest: "{{ ansible_env.HOME }}/.asdfrc"
+    state: link
+    force: true

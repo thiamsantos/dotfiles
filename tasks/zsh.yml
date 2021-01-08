@@ -4,6 +4,12 @@
     name: zsh
     state: present
 
+- name: Create completions folder
+  become: no
+  file:
+    path: "{{ ansible_env.HOME }}/.zsh_functions"
+    state: directory
+
 - name: Install oh-my-zsh
   become: no
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

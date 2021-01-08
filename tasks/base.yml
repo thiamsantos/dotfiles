@@ -11,6 +11,12 @@
     path: "{{ ansible_env.HOME }}/bin"
     state: directory
 
+- name: Create src folder
+  become: no
+  file:
+    path: "{{ ansible_env.HOME }}/src"
+    state: directory
+
 - name: Install vlc
   apt:
     name: vlc
