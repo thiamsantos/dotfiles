@@ -22,7 +22,8 @@
   "files.associations": {
     "*.avsc": "jsonc",
     "*.erb": "html",
-    ".env.local": "shellscript"
+    ".env.local": "shellscript",
+    "*.leex": "HTML (Eex)"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "git.enableSmartCommit": true,

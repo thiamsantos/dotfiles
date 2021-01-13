@@ -29,3 +29,36 @@
       - bluez-tools
       - blueman
     state: present
+
+- name: Install ffmpeg
+  apt:
+    name: ffmpeg
+    state: present
+
+- name: Install cheese
+  apt:
+    name: cheese
+    state: present
+
+- name: Install jq
+  apt:
+    name: jq
+    state: present
+
+- name: Install cowsay
+  apt:
+    name: cowsay
+    state: present
+
+- name: Install inotify-tools
+  apt:
+    name: inotify-tools
+    state: present
+
+# Increase number of watchers
+- ansible.posix.sysctl:
+    name: fs.inotify.max_user_watches
+    value: '524288'
+    sysctl_set: yes
+    state: present
+    reload: yes

@@ -17,4 +17,5 @@ fi
 
 cd $DOTFILES && \
   git pull --rebase && \
+  ansible-galaxy collection install -r requirements.yml && \
   ANSIBLE_NOCOWS=1 ansible-playbook -K -i hosts "$DOTFILES/setup.yml"
