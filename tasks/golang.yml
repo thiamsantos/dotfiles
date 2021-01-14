@@ -11,3 +11,21 @@
     dest: /usr/local
     copy: no
     creates: /usr/local/go
+
+- name: Install golero
+  become: no
+  shell: "go get -u github.com/thiamsantos/golero"
+  args:
+    creates: "{{ ansible_env.HOME }}/go/bin/golero"
+
+- name: Install gololcat
+  become: no
+  shell: "go get -u github.com/thiamsantos/gololcat"
+  args:
+    creates: "{{ ansible_env.HOME }}/go/bin/gololcat"
+
+- name: Install mkv2mp4
+  become: no
+  shell: "go get -u github.com/thiamsantos/mkv2mp4"
+  args:
+    creates: "{{ ansible_env.HOME }}/go/bin/mkv2mp4"
