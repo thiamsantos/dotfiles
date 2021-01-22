@@ -78,11 +78,16 @@ alias gm="git merge"
 alias gck="git checkout"
 alias gpl="git pull --rebase"
 alias gp="git push origin HEAD"
-alias gpf=" git push origin HEAD --force-with-lease"
+alias gpf="git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
 alias gmb="git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
-alias gsync="gck $(gmb) && gpl && gck - && gm $(gmb)"
 alias gs="git status"
+
+gsync() {
+  local main_branch="$(gmb)"
+
+  gck "$main_branch" && gpl && gck - && gm "$main_branch"
+}
 
 # tmux
 if [[ $DISPLAY ]]; then
