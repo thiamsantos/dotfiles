@@ -80,7 +80,8 @@ alias gpl="git pull --rebase"
 alias gp="git push origin HEAD"
 alias gpf=" git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
-alias gsync="gck master && gpl && gck - && gm master"
+alias gmb="git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
+alias gsync="gck $(gmb) && gpl && gck - && gm $(gmb)"
 alias gs="git status"
 
 # tmux
