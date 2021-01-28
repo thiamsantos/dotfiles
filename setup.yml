@@ -28,3 +28,4 @@
     - include: tasks/apt.yml
     - include: tasks/redshift.yml
     - include: tasks/alacritty.yml
+    - include: tasks/terraform.yml

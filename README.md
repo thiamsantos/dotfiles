@@ -22,6 +22,7 @@ $ curl -s https://raw.githubusercontent.com/thiamsantos/dotfiles/master/setup.sh
 - [ruby](https://www.ruby-lang.org/) via [asdf-ruby](https://github.com/asdf-vm/asdf-ruby)
 - [rust](https://www.rust-lang.org/)
 - [spotify](https://www.spotify.com)
+- [terraform](https://www.terraform.io/)
 - [tmux](https://github.com/tmux/tmux)
 - [vim](https://www.vim.org/)
 - [vlc](https://www.videolan.org/vlc/)
