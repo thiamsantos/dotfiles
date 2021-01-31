@@ -1,0 +1,5 @@
+---
+- name: Install awscli
+  pip:
+    name: awscli
+    executable: pip3
