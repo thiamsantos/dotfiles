@@ -94,6 +94,8 @@ gsync() {
   gck "$main_branch" && gpl && gck - && gm "$main_branch"
 }
 
+alias xclip="xclip -selection c"
+
 # tmux
 if [[ $DISPLAY ]]; then
   [[ $- != *i* ]] && return

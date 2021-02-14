@@ -28,6 +28,7 @@ Plug 'wellle/tmux-complete.vim'
 Plug 'mhinz/vim-startify'
 Plug 'google/vim-searchindex'
 Plug 'RRethy/vim-illuminate'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
