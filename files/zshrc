@@ -95,6 +95,7 @@ gsync() {
 }
 
 alias xclip="xclip -selection c"
+alias mt="mix format && mix test && mix credo"
 
 # tmux
 if [[ $DISPLAY ]]; then
