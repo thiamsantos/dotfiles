@@ -11,24 +11,15 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-eunuch'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-scripts/vim-auto-save'
-Plug 'rstacruz/vim-closer'
-Plug 'andymass/vim-matchup'
 Plug 'wellle/tmux-complete.vim'
-Plug 'mhinz/vim-startify'
 Plug 'google/vim-searchindex'
 Plug 'RRethy/vim-illuminate'
-Plug 'preservim/nerdtree'
 
 call plug#end()
 
