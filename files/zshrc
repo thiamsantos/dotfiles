@@ -97,6 +97,40 @@ gsync() {
 alias xclip="xclip -selection c"
 alias mt="mix format && mix test && mix credo"
 
+encrypt_value() {
+  echo -n "Enter value: "
+  stty -echo
+  read value
+  echo
+  stty echo
+
+  echo -n "Enter secret: "
+  stty -echo
+  read secret
+  echo
+  stty echo
+
+  echo $value | openssl aes-256-cbc -a -salt -k $secret -pbkdf2 | xclip
+  echo 'Encrypted value copied to clipboard!'
+}
+
+decrypt_value() {
+  echo -n "Enter encrypted value: "
+  stty -echo
+  read encrypted_value
+  echo
+  stty echo
+
+  echo -n "Enter secret: "
+  stty -echo
+  read secret
+  echo
+  stty echo
+
+  echo $encrypted_value | openssl aes-256-cbc -d -a -k $secret -pbkdf2 | xclip
+  echo 'Value copied to clipboard!'
+}
+
 # tmux
 if [[ $DISPLAY ]]; then
   [[ $- != *i* ]] && return
