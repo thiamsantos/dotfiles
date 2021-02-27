@@ -23,7 +23,8 @@
     "*.avsc": "jsonc",
     "*.erb": "html",
     ".env.local": "shellscript",
-    "*.leex": "HTML (Eex)"
+    "*.leex": "HTML (Eex)",
+    "vimrc": "viml"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "git.enableSmartCommit": true,

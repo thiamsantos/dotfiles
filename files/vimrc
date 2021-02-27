@@ -13,16 +13,12 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
-Plug 'wellle/tmux-complete.vim'
 Plug 'google/vim-searchindex'
-Plug 'RRethy/vim-illuminate'
 
 call plug#end()
 
+" Switch syntax highlighting on
 syntax on
 
 " Use 2 spaces instead of tabs
@@ -40,23 +36,13 @@ set nu
 " Disable swap files
 set noswapfile
 
-" Some servers have issues with backup files, see #649
+" Disable backup files
 set nobackup
 set nowritebackup
 
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
+" Enable highlighting and stripping whitespace on save by default
+let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-let g:indent_guides_enable_on_vm_startup = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Enable airline tabline
+let g:airline#extensions#tabline#enabled = 1
