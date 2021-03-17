@@ -65,6 +65,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # iex history
 export ERL_AFLAGS="-kernel shell_history enabled"
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
 
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -87,6 +88,13 @@ alias gpf="git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
 alias gmb="git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
 alias gs="git status"
+alias gcb="git rev-parse --abbrev-ref HEAD"
+
+gsup() {
+  local current_branch="$(gcb)"
+
+  git branch --set-upstream-to="origin/$current_branch" "$current_branch"
+}
 
 gsync() {
   local main_branch="$(gmb)"
