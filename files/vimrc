@@ -61,3 +61,7 @@ set linebreak
 
 " Enable airline tabline
 let g:airline#extensions#tabline#enabled = 1
+
+" Enable persistent undo
+set undofile
+set undodir=~/.vim/undodir
