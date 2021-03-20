@@ -65,3 +65,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Enable persistent undo
 set undofile
 set undodir=~/.vim/undodir
+
+" Centralize matches of search
+nnoremap n nzz
+nnoremap N Nzz
