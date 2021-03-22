@@ -69,3 +69,11 @@ set undodir=~/.vim/undodir
 " Centralize matches of search
 nnoremap n nzz
 nnoremap N Nzz
+
+" Buffer navigation
+map <C-B> :bprevious<CR>
+map <C-N> :bnext<CR>
+
+" Split right and below
+set splitright
+set splitbelow
