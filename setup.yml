@@ -30,3 +30,4 @@
     - include: tasks/alacritty.yml
     - include: tasks/terraform.yml
     - include: tasks/awscli.yml
+    - include: tasks/clamav.yml
