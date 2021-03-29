@@ -1,0 +1,10 @@
+---
+- name: Install pgcli
+  apt:
+    name: pgcli
+    state: present
+
+- name: Install pg dev headers
+  apt:
+    name: libpq-dev
+    state: present

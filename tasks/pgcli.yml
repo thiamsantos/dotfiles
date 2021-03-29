@@ -1,5 +1,0 @@
----
-- name: Install pgcli
-  apt:
-    name: pgcli
-    state: present

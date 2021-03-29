@@ -77,3 +77,6 @@ map <C-N> :bnext<CR>
 " Split right and below
 set splitright
 set splitbelow
+
+" make . to work with visually selected lines
+vnoremap . :normal.<CR>

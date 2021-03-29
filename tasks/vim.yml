@@ -1,7 +1,9 @@
 ---
 - name: Install vim
   apt:
-    name: vim
+    name: 
+      - vim
+      - vim-gtk
     state: present
 
 - name: Install ag
