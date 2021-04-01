@@ -72,10 +72,6 @@ set undodir=~/.vim/undodir
 nnoremap n nzz
 nnoremap N Nzz
 
-" Buffer navigation
-map <C-B> :bprevious<CR>
-map <C-N> :bnext<CR>
-
 " Split right and below
 set splitright
 set splitbelow
@@ -84,10 +80,18 @@ set splitbelow
 vnoremap . :normal.<CR>
 
 " Fuzzy find
-nmap <C-P> :GFiles<CR>
 let g:fzf_preview_window = []
 
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+
+" Map space to leader
+let mapleader = "\<Space>"
+
+nnoremap <Leader>p :GFiles<CR>
+nnoremap <Leader>w :%s/\s\+$//e<CR>:w<CR>
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>b :bprevious<CR>
+nnoremap <Leader>r :source $MYVIMRC<CR>
