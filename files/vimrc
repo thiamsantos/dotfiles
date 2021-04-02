@@ -1,13 +1,13 @@
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+      \| PlugInstall --sync | source $MYVIMRC
+      \| endif
 
 call plug#begin()
 
@@ -17,6 +17,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-searchindex'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -45,15 +46,6 @@ set nowritebackup
 " Enable highlighting and stripping whitespace on save by default
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
-
-" Default netrw To Tree Liststyle
-let g:netrw_liststyle = 3
-" Disable netrw banner
-let g:netrw_banner = 0
-" Open files in netrw in previous window
-let g:netrw_browse_split = 4
-" Set netrw width to 20% of page
-let g:netrw_winsize = 20
 
 " Highlight search
 set hlsearch
@@ -87,11 +79,26 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
+" highlight trailing whitespace
+match ErrorMsg '\s\+$'
+" remove trailing whitespaces automatically
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Map space to leader
 let mapleader = "\<Space>"
 
 nnoremap <Leader>p :GFiles<CR>
-nnoremap <Leader>w :%s/\s\+$//e<CR>:w<CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>b :bprevious<CR>
 nnoremap <Leader>r :source $MYVIMRC<CR>
+nnoremap <Leader>v :vs<CR>
+nnoremap <Leader>s :sp<CR>
+nnoremap <Leader>o :on<CR>
+nnoremap <Leader>q :bd<CR>
+nnoremap <Leader>l <C-W>l
+nnoremap <Leader>k <C-W>k
+nnoremap <Leader>j <C-W>j
+nnoremap <Leader>h <C-W>h
+nnoremap <Leader>x <C-W>q
+nnoremap <Leader>f :NERDTreeToggle<CR>
