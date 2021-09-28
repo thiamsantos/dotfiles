@@ -84,10 +84,13 @@ match ErrorMsg '\s\+$'
 " remove trailing whitespaces automatically
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Map :w!! to write with sudo
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 " Map space to leader
 let mapleader = "\<Space>"
 
-nnoremap <Leader>p :GFiles<CR>
+nnoremap <Leader>p :FZF<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>b :bprevious<CR>

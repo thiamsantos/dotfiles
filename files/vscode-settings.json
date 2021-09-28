@@ -18,13 +18,13 @@
     "**/deps/*/**": true
   },
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 0,
   "files.associations": {
     "*.avsc": "jsonc",
     "*.erb": "html",
     ".env.local": "shellscript",
     "*.leex": "HTML (Eex)",
-    "vimrc": "viml"
+    "vimrc": "viml",
+    "*.eex": "HTML (Eex)"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "git.enableSmartCommit": true,
@@ -33,5 +33,6 @@
   "editor.largeFileOptimizations": false,
   "files.trimTrailingWhitespace": true,
   "editor.tokenColorCustomizations": null,
-  "workbench.preferredDarkColorTheme": "Material Syntax - Dark"
+  "workbench.preferredDarkColorTheme": "Material Syntax - Dark",
+  "workbench.editor.untitled.hint": "hidden"
 }

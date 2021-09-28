@@ -1,0 +1,4 @@
+configuration {
+  theme: "flat-green";
+  modi: "run,drun,window";
+}
