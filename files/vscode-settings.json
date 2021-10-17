@@ -34,5 +34,6 @@
   "files.trimTrailingWhitespace": true,
   "editor.tokenColorCustomizations": null,
   "workbench.preferredDarkColorTheme": "Material Syntax - Dark",
-  "workbench.editor.untitled.hint": "hidden"
+  "workbench.editor.untitled.hint": "hidden",
+  "redhat.telemetry.enabled": false
 }
