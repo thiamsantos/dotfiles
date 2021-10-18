@@ -1,6 +1,6 @@
 configuration {
-  modi: "combi,run,drun,window";
-  combi-modi: "window,run,drun";
+  modi: "combi,window,drun,run";
+  combi-modi: "window,drun,run";
   //            ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
   color-normal: "#1D1F21,  #E5E5E5,  #4C4C4C,  #1E90FF,  #FFFFFF";
   color-urgent: "#1D1F21,  #CD0000,  #4C4C4C,  #CD0000,  #1D1F21";
@@ -8,4 +8,5 @@ configuration {
   //            ´background´, ´border´, ´separator´
   color-window: "#1D1F21,      #E5E5E5,  #E5E5E5";
   font: "mono 14";
+  separator-style: "none";
 }
