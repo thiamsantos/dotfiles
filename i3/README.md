@@ -5,3 +5,5 @@
 - imagemagick
 - scrot
 - feh
+- playerctl
+- i3blocks
