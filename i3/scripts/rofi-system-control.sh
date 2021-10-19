@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-set -e
+set -eu
 
 chosen=$(echo "[Cancel]\nLock\nLogout\nSuspend\nHibernate\nReboot\nShutdown" | rofi -dmenu -i)
 

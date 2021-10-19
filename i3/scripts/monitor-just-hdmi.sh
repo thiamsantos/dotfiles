@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -eu
+
 if xrandr | grep "HDMI-1 connected"
 then
     xrandr --output HDMI-1 --primary

@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-set -e
+set -eu
 
 img=/tmp/i3lock.png
 

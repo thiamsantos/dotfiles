@@ -6,7 +6,7 @@ configuration {
   color-urgent: "#1D1F21,  #CD0000,  #4C4C4C,  #CD0000,  #1D1F21";
   color-active: "#1D1F21,  #00CD00,  #4C4C4C,  #00CD00,  #1D1F21";
   //            ´background´, ´border´, ´separator´
-  color-window: "#1D1F21,      #E5E5E5,  #E5E5E5";
+  color-window: "#1D1F21,      #5C6269,  #E5E5E5";
   font: "mono 14";
   separator-style: "none";
 }
