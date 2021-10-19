@@ -237,4 +237,4 @@ workspace 1 output HDMI-1
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-# new_window none
+new_window none
