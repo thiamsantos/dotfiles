@@ -21,7 +21,7 @@ case $chosen in
         systemctl reboot
         ;;
     Shutdown)
-        systemctl systemctl poweroff -i
+        systemctl poweroff -i
         ;;
     *)
         exit 0
