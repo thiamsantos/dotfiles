@@ -1,0 +1,54 @@
+icons = "awesome"
+theme = "/home/thiago/dotfiles/i3/i3status-rust/theme.toml"
+
+[[block]]
+block = "music"
+player = "spotify"
+format = "{title} by {artist}"
+dynamic_width = true
+buttons = ["prev", "play", "next"]
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{utilization}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+
+[[block]]
+block = "memory"
+display_type = "swap"
+format_swap = "{swap_used_percents}"
+
+
+[[block]]
+block = "bluetooth"
+mac = "38:18:4C:2B:F5:A8"
+format = "XM3"
+
+[[block]]
+block = "battery"
+format = "{percentage}"
+
+[[block]]
+block = "battery"
+driver = "upower"
+device = "hidpp_battery_0"
+format = "Mouse {percentage}"
+
+[[block]]
+block = "networkmanager"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+device_format = "{icon}{ap}"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"

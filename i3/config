@@ -198,9 +198,9 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:Ubuntu Mono 14
+    font pango:Ubuntu Mono 14, FontAwesome 12
     position top
-    status_command i3blocks -c ~/dotfiles/i3/i3blocks.conf
+    status_command i3status-rs ~/dotfiles/i3/i3status-rust/config.toml
 
     colors {
         background #1D1F21
