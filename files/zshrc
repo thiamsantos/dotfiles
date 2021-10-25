@@ -12,36 +12,14 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+autoload -U add-zsh-hook
 
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-nvm alias default 12.19.0 > /dev/null
-
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install > /dev/null
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use > /dev/null
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    nvm use default > /dev/null
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# fnm
+export PATH="$PATH:$HOME/.fnm"
+eval "$(fnm env)"
 
 # terraform
 autoload -U +X bashcompinit && bashcompinit
