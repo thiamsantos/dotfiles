@@ -264,3 +264,6 @@ bindsym $mod+p exec sh ~/dotfiles/i3/scripts/rofi-kill.sh
 
 # %%hotkey: Rofi: keys - Show all current keybinds %%
 bindsym $mod+b exec ~/dotfiles/i3/scripts/rofi-i3-hotkeys.py
+
+# %%hotkey: 1password quick access %%
+bindsym $mod+o exec 1password --quick-access

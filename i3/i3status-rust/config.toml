@@ -26,7 +26,6 @@ block = "memory"
 display_type = "swap"
 format_swap = "{swap_used_percents}"
 
-
 [[block]]
 block = "bluetooth"
 mac = "38:18:4C:2B:F5:A8"
@@ -41,12 +40,6 @@ block = "battery"
 driver = "upower"
 device = "hidpp_battery_0"
 format = "Mouse {percentage}"
-
-[[block]]
-block = "networkmanager"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
-device_format = "{icon}{ap}"
 
 [[block]]
 block = "time"

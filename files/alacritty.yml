@@ -3,7 +3,7 @@ window:
 
 font:
   normal:
-    family: monospace
+    family: Ubuntu Mono
     style: Regular
   size: 14.0
 
