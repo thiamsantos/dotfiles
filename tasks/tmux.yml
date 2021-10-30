@@ -32,7 +32,7 @@
   args:
     creates: "{{ ansible_env.HOME }}/.tmux/plugins/tmux-plugin-sysstat"
 
-- name: Install tmux-plugin-sysstat
+- name: Install tmux-prefix-highlight
   become: no
   shell: "git clone https://github.com/tmux-plugins/tmux-prefix-highlight {{ ansible_env.HOME }}/.tmux/plugins/tmux-prefix-highlight"
   args:
