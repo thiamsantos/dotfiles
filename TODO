@@ -5,3 +5,4 @@
 - src compile https://github.com/ogham/dog
 - Install fnm
 - apt install 1password
+- ln files/dot to ~/bin

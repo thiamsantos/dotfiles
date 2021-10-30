@@ -13,7 +13,7 @@ font pango:Ubuntu Mono 12
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- sh ~/dotfiles/i3/scripts/lock.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- dot lock
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -233,10 +233,10 @@ exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
 
 # %%hotkey: Rofi: lock / shutdown / reboot %%
-bindsym $mod+BackSpace exec --no-startup-id sh ~/dotfiles/i3/scripts/rofi-system-control.sh
+bindsym $mod+BackSpace exec --no-startup-id dot rofi_systemctl
 
 # monitor
-exec ~/.config/i3/scripts/monitor-just-hdmi.sh
+exec dot setup_monitor
 workspace 1 output HDMI-1
 
 # floating pop up automatically
@@ -262,10 +262,10 @@ client.background       #E5E5E5
 hide_edge_borders smart
 
 # %%hotkey: Rofi: kill - kill a program %%
-bindsym $mod+p exec sh ~/dotfiles/i3/scripts/rofi-kill.sh
+bindsym $mod+p exec dot rofi_kill
 
 # %%hotkey: Rofi: keys - Show all current keybinds %%
-bindsym $mod+b exec ~/dotfiles/i3/scripts/rofi-i3-hotkeys.py
+bindsym $mod+b exec dot rofi_i3_hotkeys
 
 # %%hotkey: 1password quick access %%
 bindsym $mod+o exec 1password --quick-access

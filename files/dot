@@ -1,0 +1,110 @@
+#!/usr/bin/env sh
+
+set -e
+
+lock() {
+  img=/tmp/i3lock.png
+
+  scrot -o $img
+  convert $img -scale 10% -scale 1000% $img
+
+  i3lock -e -i $img
+}
+
+setup_monitor() {
+  if xrandr | grep "HDMI-1 connected"
+  then
+    xrandr --output HDMI-1 --primary
+    xrandr --output eDP-1 --off
+    xrandr --output HDMI-1 --auto
+    feh --randomize --bg-fill --no-fehbg ~/wallpapers/*
+  fi
+}
+
+rofi_systemctl() {
+  chosen=$(echo "[Cancel]\nLock\nLogout\nSuspend\nHibernate\nReboot\nShutdown" | rofi -dmenu -i)
+
+  case $chosen in
+    Lock)
+      lock
+      ;;
+    Logout)
+      i3-msg exit
+      ;;
+    Suspend)
+      lock && systemctl suspend
+      ;;
+    Hibernate)
+      lock && systemctl suspend
+      ;;
+    Reboot)
+      systemctl reboot
+      ;;
+    Shutdown)
+      systemctl poweroff -i
+      ;;
+    *)
+      exit 0
+      ;;
+  esac
+}
+
+rofi_i3_hotkeys() {
+  "$HOME"/dotfiles/files/rofi-i3-hotkeys.py
+}
+
+rofi_kill() {
+  all_pids="$(ps exa)"
+  pid_line=$( (echo "${all_pids}")  | rofi -dmenu -i -p "Kill process")
+  pid=$(echo "$pid_line" | awk '{print $1}')
+
+  if [ -z "$pid" -o "$pid" = "PID" ]
+  then
+    return 0
+  else
+    SUDO_ASKPASS="$HOME/dotfiles/files/rofi-ask-password.sh" sudo -A kill -9 "$pid"
+  fi
+}
+
+dot_help() {
+  echo "
+Dotfile CLI.
+
+Usage: dot [command] [args]
+
+Commands:
+  lock            Lock screen
+  setup_monitor   Enable HDMI and turn off laptop screen
+  rofi_kill       Kill a running process via rofi
+  rofi_systemctl  Lock, reboot, shutdown via rofi
+  rofi_i3_hotkeys Show i3 hotkeys via rofi
+  *               Help
+
+Examples:
+  $ dot lock
+  $ dot setup_monitor
+  $ dot rofi_systemctl
+"
+  exit 1
+}
+
+case "$1" in
+lock)
+  lock
+  ;;
+setup_monitor)
+  setup_monitor
+  ;;
+rofi_systemctl)
+  rofi_systemctl
+  ;;
+rofi_i3_hotkeys)
+  rofi_i3_hotkeys
+  ;;
+rofi_kill)
+  rofi_kill
+  ;;
+*)
+  dot_help
+  ;;
+esac
