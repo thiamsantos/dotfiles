@@ -1,0 +1,7 @@
+- src compile https://github.com/davatorium/rofi
+- src compile https://github.com/greshake/i3status-rust
+  - apt install libdbus-1-dev libpulse-dev libgoogle-perftools-dev libnotmuch-dev pandoc fonts-font-awesome
+- src compile https://github.com/dandavison/delta
+- src compile https://github.com/ogham/dog
+- Install fnm
+- apt install 1password
