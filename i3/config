@@ -210,7 +210,7 @@ bar {
         separator #666666
 
         #                  border   bground text
-        focused_workspace  #98be65  #98be65 #1c1f24
+        focused_workspace  #51afef  #51afef #1c1f24
         active_workspace   #1c1f24  #1c1f24 #e5e5e5
         inactive_workspace #1c1f24  #1c1f24 #bbc2cf
         urgent_workspace   #1c1f24  #ff6c6b #e5e5e5
