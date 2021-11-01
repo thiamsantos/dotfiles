@@ -12,3 +12,12 @@
 - git clone https://github.com/ogham/dog && compile
 - git clone https://github.com/dandavison/delta && compile
 - git clone https://github.com/davatorium/rofi && compile
+
+#doom emacs
+- add-apt-repository ppa:kelleyk/emacs
+- apt-get update
+- apt-get install emacs27
+- apt-get install ripgrep fd-find
+- git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+- ~/.emacs.d/bin/doom install
+- ~/.doom.d symlink
