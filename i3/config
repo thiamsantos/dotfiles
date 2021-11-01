@@ -39,7 +39,7 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # %%hotkey: start a terminal %%
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # %%hotkey: kill focused window %%
 bindsym $mod+w kill
@@ -205,16 +205,16 @@ bar {
     status_command i3status-rs ~/dotfiles/i3/i3status-rust/config.toml
 
     colors {
-        background #1D1F21
-        statusline #E5E5E5
+        background #282c34
+        statusline #e5e5e5
         separator #666666
 
         #                  border   bground text
-        focused_workspace  #1E90FF  #1E90FF #E5E5E5
-        active_workspace   #1D1F21  #1D1F21 #E5E5E5
-        inactive_workspace #1D1F21  #1D1F21 #5C6269
-        urgent_workspace   #1D1F21  #CD0000 #E5E5E5
-        binding_mode       #1D1F21  #CD0000 #E5E5E5
+        focused_workspace  #98be65  #98be65 #282c34
+        active_workspace   #282c34  #282c34 #e5e5e5
+        inactive_workspace #282c34  #282c34 #bbc2cf
+        urgent_workspace   #282c34  #ff6c6b #e5e5e5
+        binding_mode       #282c34  #ff6c6b #e5e5e5
     }
 }
 
@@ -251,12 +251,12 @@ bindsym --release Print exec "mate-screenshot"
 
 # Colors
 #                       border  bground text    indicator child_border
-client.focused          #1E90FF #1E90FF #FFFFFF #4682B4   #5c6269
-client.focused_inactive #1D1F21 #4C4C4C #E5E5E5 #4C4C4C   #4C4C4C
-client.unfocused        #1D1F21 #1D1F21 #5c6269 #1D1F21   #1D1F21
-client.urgent           #1D1F21 #CD0000 #E5E5E5 #CD0000   #CD0000
-client.placeholder      #1D1F21 #1D1F21 #E5E5E5 #1D1F21   #1D1F21
-client.background       #E5E5E5
+client.focused          #51afef #51afef #FFFFFF #2257A0   #3f444a
+client.focused_inactive #282c34 #23272e #e5e5e5 #23272e   #23272e
+client.unfocused        #282c34 #282c34 #3f444a #282c34   #282c34
+client.urgent           #282c34 #ff6c6b #e5e5e5 #ff6c6b   #ff6c6b
+client.placeholder      #282c34 #282c34 #e5e5e5 #282c34   #282c34
+client.background       #e5e5e5
 
 # hides borders on workspaces with only one window visible
 hide_edge_borders smart

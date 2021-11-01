@@ -131,7 +131,7 @@ decrypt_value() {
 }
 
 # tmux
-if [[ $DISPLAY ]]; then
-  [[ $- != *i* ]] && return
-  [[ -z "$TMUX" ]] && exec tmux
-fi
+# if [[ $DISPLAY ]]; then
+#   [[ $- != *i* ]] && return
+#   [[ -z "$TMUX" ]] && exec tmux
+# fi
