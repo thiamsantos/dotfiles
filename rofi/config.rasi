@@ -2,11 +2,11 @@ configuration {
   modi: "combi,window,drun,run";
   combi-modi: "window,drun,run";
   //            ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
-  color-normal: "#282c34,  #e5e5e5,  #23272e,  #51afef,  #FFFFFF";
-  color-urgent: "#282c34,  #ff6c6b,  #23272e,  #ff6c6b,  #282c34";
-  color-active: "#282c34,  #98be65,  #23272e,  #98be65,  #282c34";
+  color-normal: "#1c1f24,  #e5e5e5,  #1e2127,  #51afef,  #FFFFFF";
+  color-urgent: "#1c1f24,  #ff6c6b,  #1e2127,  #ff6c6b,  #1c1f24";
+  color-active: "#1c1f24,  #98be65,  #1e2127,  #98be65,  #1c1f24";
   //            ´background´, ´border´, ´separator´
-  color-window: "#282c34,      #3f444a,  #e5e5e5";
+  color-window: "#1c1f24,      #363a3f,  #e5e5e5";
   font: "mono 14";
   separator-style: "none";
 }

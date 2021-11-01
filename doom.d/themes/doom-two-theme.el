@@ -49,28 +49,28 @@ Can be an integer to determine the exact padding."
   "A dark theme inspired by Atom One Dark."
 
   ;; name        default   256           16
-  ((bg         '("#282c34" "black"       "black"  ))
+  ((bg         '("#1c1f24" "black"       "black"  ))
    (fg         '("#bbc2cf" "#bfbfbf"     "brightwhite"  ))
 
    ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
    ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
    ;; or region), especially when paired with the `doom-darken', `doom-lighten',
    ;; and `doom-blend' helper functions.
-   (bg-alt     '("#21242b" "black"       "black"        ))
+   (bg-alt     '("#1e2027" "black"       "black"        ))
    (fg-alt     '("#5B6268" "#2d2d2d"     "white"        ))
 
    ;; These should represent a spectrum from bg to fg, where base0 is a starker
    ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
    ;; dark grey, base0 should be white and base8 should be black.
-   (base0      '("#1B2229" "black"       "black"        ))
-   (base1      '("#1c1f24" "#1e1e1e"     "brightblack"  ))
-   (base2      '("#202328" "#2e2e2e"     "brightblack"  ))
-   (base3      '("#23272e" "#262626"     "brightblack"  ))
-   (base4      '("#3f444a" "#3f3f3f"     "brightblack"  ))
-   (base5      '("#5B6268" "#525252"     "brightblack"  ))
-   (base6      '("#73797e" "#6b6b6b"     "brightblack"  ))
-   (base7      '("#9ca0a4" "#979797"     "brightblack"  ))
-   (base8      '("#DFDFDF" "#dfdfdf"     "white"        ))
+   (base0      '("#171d23" "black"       "black"        ))
+   (base1      '("#181a1f" "#1e1e1e"     "brightblack"  ))
+   (base2      '("#1b1e22" "#2e2e2e"     "brightblack"  ))
+   (base3      '("#1e2127" "#262626"     "brightblack"  ))
+   (base4      '("#363a3f" "#3f3f3f"     "brightblack"  ))
+   (base5      '("#4d5358" "#525252"     "brightblack"  ))
+   (base6      '("#62676b" "#6b6b6b"     "brightblack"  ))
+   (base7      '("#83888d" "#979797"     "brightblack"  ))
+   (base8      '("#bebebe" "#bebebe"     "white"        ))
 
    (grey       base4)
    (red        '("#ff6c6b" "#ff6655" "red"          ))
@@ -152,7 +152,7 @@ Can be an integer to determine the exact padding."
    (doom-modeline-buffer-path :inherit 'mode-line-emphasis :weight 'bold)
    (doom-modeline-buffer-project-root :foreground green :weight 'bold)
    ;;;; elscreen
-   (elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
+   (elscreen-tab-other-screen-face :background "#25292e" :foreground "#151618")
    ;;;; ivy
    (ivy-current-match :background dark-blue :distant-foreground base0 :weight 'normal)
    ;;;; LaTeX-mode

@@ -9,10 +9,10 @@ font:
 
 colors:
   primary:
-    background: '#282c34'
+    background: '#1c1f24'
     foreground: '#FFFFFF'
   normal:
-    black:   '#282c34'
+    black:   '#1c1f24'
     red:     '#ff6c6b'
     green:   '#98be65'
     yellow:  '#ECBE7B'
