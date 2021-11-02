@@ -130,8 +130,3 @@ decrypt_value() {
   echo 'Value copied to clipboard!'
 }
 
-# tmux
-# if [[ $DISPLAY ]]; then
-#   [[ $- != *i* ]] && return
-#   [[ -z "$TMUX" ]] && exec tmux
-# fi

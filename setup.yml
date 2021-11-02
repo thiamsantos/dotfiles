@@ -19,7 +19,6 @@
     - include: tasks/node.yml
     - include: tasks/rust.yml
     - include: tasks/golang.yml
-    - include: tasks/tmux.yml
     - include: tasks/docker.yml
     - include: tasks/zsh.yml
     - include: tasks/vim.yml
