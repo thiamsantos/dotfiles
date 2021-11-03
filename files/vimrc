@@ -14,9 +14,6 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
-Plug 'google/vim-searchindex'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
 call plug#end()
@@ -71,9 +68,6 @@ set splitbelow
 " make . to work with visually selected lines
 vnoremap . :normal.<CR>
 
-" Fuzzy find
-let g:fzf_preview_window = []
-
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
@@ -86,22 +80,3 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Map :w!! to write with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Map space to leader
-let mapleader = "\<Space>"
-
-nnoremap <Leader>p :FZF<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>n :bnext<CR>
-nnoremap <Leader>b :bprevious<CR>
-nnoremap <Leader>r :source $MYVIMRC<CR>
-nnoremap <Leader>v :vs<CR>
-nnoremap <Leader>s :sp<CR>
-nnoremap <Leader>o :on<CR>
-nnoremap <Leader>q :bd<CR>
-nnoremap <Leader>l <C-W>l
-nnoremap <Leader>k <C-W>k
-nnoremap <Leader>j <C-W>j
-nnoremap <Leader>h <C-W>h
-nnoremap <Leader>x <C-W>q
-nnoremap <Leader>f :NERDTreeToggle<CR>
