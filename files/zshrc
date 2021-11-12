@@ -130,3 +130,4 @@ decrypt_value() {
   echo 'Value copied to clipboard!'
 }
 
+. $HOME/.ham/completion/bash/_ham

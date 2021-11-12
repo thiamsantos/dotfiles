@@ -2,7 +2,7 @@ configuration {
   modi: "combi,window,drun,run";
   combi-modi: "window,drun,run";
   //            ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
-  color-normal: "#1c1f24,  #e5e5e5,  #1e2127,  #51afef,  #FFFFFF";
+  color-normal: "#1c1f24,  #e5e5e5,  #1e2127,  #51afef,  #1c1f24";
   color-urgent: "#1c1f24,  #ff6c6b,  #1e2127,  #ff6c6b,  #1c1f24";
   color-active: "#1c1f24,  #98be65,  #1e2127,  #98be65,  #1c1f24";
   //            ´background´, ´border´, ´separator´

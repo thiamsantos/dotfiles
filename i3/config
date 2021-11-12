@@ -269,3 +269,6 @@ bindsym $mod+b exec dot rofi_i3_hotkeys
 
 # %%hotkey: 1password quick access %%
 bindsym $mod+o exec 1password --quick-access
+
+# redshift
+exec flock -w 0 /tmp/redshift.lock -c "redshift -c ~/.config/redshift/redshift.conf"
