@@ -11,14 +11,35 @@ lock() {
   i3lock -e -i $img
 }
 
+switch_wallpaper() {
+  feh --randomize --bg-fill --no-fehbg ~/wallpapers/*
+}
+
 setup_monitor() {
   if xrandr | grep "HDMI-1 connected"
   then
     xrandr --output HDMI-1 --primary
     xrandr --output eDP-1 --off
     xrandr --output HDMI-1 --auto
-    feh --randomize --bg-fill --no-fehbg ~/wallpapers/*
+    i3-msg 'workspace 1 output HDMI-1'
   fi
+
+  switch_wallpaper
+}
+
+switch_monitor() {
+  if xrandr | grep "HDMI-1 connected primary"
+  then
+    xrandr --output eDP-1 --primary
+    xrandr --output HDMI-1 --off
+    xrandr --output eDP-1 --auto
+  else
+    xrandr --output HDMI-1 --primary
+    xrandr --output eDP-1 --off
+    xrandr --output HDMI-1 --auto
+  fi
+
+  switch_wallpaper
 }
 
 rofi_systemctl() {
@@ -73,12 +94,14 @@ Dotfile CLI.
 Usage: dot [command] [args]
 
 Commands:
-  lock            Lock screen
-  setup_monitor   Enable HDMI and turn off laptop screen
-  rofi_kill       Kill a running process via rofi
-  rofi_systemctl  Lock, reboot, shutdown via rofi
-  rofi_i3_hotkeys Show i3 hotkeys via rofi
-  *               Help
+  lock             Lock screen
+  rofi_i3_hotkeys  Show i3 hotkeys via rofi
+  rofi_kill        Kill a running process via rofi
+  rofi_systemctl   Lock, reboot, shutdown via rofi
+  setup_monitor    Enable HDMI and turn off laptop screen
+  switch_monior    Switch between HDMI and laptop screen
+  switch_wallpaper Switch the wallpaper
+  *                Help
 
 Examples:
   $ dot lock
@@ -94,6 +117,12 @@ lock)
   ;;
 setup_monitor)
   setup_monitor
+  ;;
+switch_monitor)
+  switch_monitor
+  ;;
+switch_wallpaper)
+  switch_wallpaper
   ;;
 rofi_systemctl)
   rofi_systemctl

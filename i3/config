@@ -237,7 +237,12 @@ bindsym $mod+BackSpace exec --no-startup-id dot rofi_systemctl
 
 # monitor
 exec dot setup_monitor
-workspace 1 output HDMI-1
+
+# %%hotkey: Switch monitor (HDMI <-> Laptop) %%
+bindsym $mod+m exec dot switch_monitor
+
+# %%hotkey: Switch wallpaper %%
+bindsym $mod+s exec dot switch_wallpaper
 
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
