@@ -237,6 +237,7 @@ bindsym $mod+BackSpace exec --no-startup-id dot rofi_systemctl
 
 # monitor
 exec dot setup_monitor
+workspace to output primary
 
 # %%hotkey: Switch monitor (HDMI <-> Laptop) %%
 bindsym $mod+m exec dot switch_monitor
@@ -276,4 +277,4 @@ bindsym $mod+b exec dot rofi_i3_hotkeys
 bindsym $mod+o exec 1password --quick-access
 
 # redshift
-exec flock -w 0 /tmp/redshift.lock -c "redshift -c ~/.config/redshift/redshift.conf"
+exec_always flock -w 0 /tmp/redshift.lock -c "redshift -c ~/.config/redshift/redshift.conf"
