@@ -245,6 +245,9 @@ bindsym $mod+m exec dot switch_monitor
 # %%hotkey: Switch wallpaper %%
 bindsym $mod+s exec dot switch_wallpaper
 
+# %%hotkey: Switch headphone %%
+bindsym $mod+x exec dot switch_headphone
+
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable

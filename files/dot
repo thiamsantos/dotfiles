@@ -35,6 +35,17 @@ switch_monitor() {
   switch_wallpaper
 }
 
+switch_headphone() {
+  device="38:18:4C:2B:F5:A8"
+
+  if bluetoothctl info $device | grep "Connected: yes"
+  then
+    bluetoothctl disconnect $device
+  else
+    bluetoothctl connect $device
+  fi
+}
+
 rofi_systemctl() {
   chosen=$(echo "[Cancel]\nLock\nLogout\nSuspend\nHibernate\nReboot\nShutdown" | rofi -dmenu -i)
 
@@ -92,6 +103,7 @@ Commands:
   rofi_kill        Kill a running process via rofi
   rofi_systemctl   Lock, reboot, shutdown via rofi
   setup_monitor    Enable HDMI and turn off laptop screen
+  switch_headphone Connect headphone
   switch_monior    Switch between HDMI and laptop screen
   switch_wallpaper Switch the wallpaper
   *                Help
@@ -107,6 +119,9 @@ Examples:
 case "$1" in
 lock)
   lock
+  ;;
+switch_headphone)
+  switch_headphone
   ;;
 setup_monitor)
   setup_monitor
