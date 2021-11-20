@@ -42,6 +42,11 @@ device = "hidpp_battery_0"
 format = "Mouse {percentage}"
 
 [[block]]
+block = "custom"
+interval = "once"
+command = "echo \"WEEK $(date '+%U')\""
+
+[[block]]
 block = "time"
 interval = 5
 format = "%a %d/%m %R"
