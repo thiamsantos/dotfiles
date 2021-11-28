@@ -38,7 +38,10 @@
 ;; Disable projectile caching
 (setq projectile-enable-caching nil)
 
+(setq projectile-project-search-path '(("~/dev" . 3)))
+
 (use-package! magit-todos :after magit :config (magit-todos-mode))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
