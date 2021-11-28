@@ -13,6 +13,9 @@
 - git clone https://github.com/dandavison/delta && compile
 - git clone https://github.com/davatorium/rofi && compile
 
+https://gitlab.com/jD91mZM2/xidlehook
+apt install -y libpulse-dev libpulse0 libxcb-screensaver0 libxcb-screensaver0-dev libxcb1 libxcb1-dev libxss-dev libxss1
+
 #doom emacs
 - add-apt-repository ppa:kelleyk/emacs
 - apt-get update

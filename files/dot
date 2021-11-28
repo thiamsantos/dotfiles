@@ -11,6 +11,22 @@ lock() {
   i3lock -e -i $img
 }
 
+autolock() {
+  xidlehook \
+    `# Don't lock when there's a fullscreen application` \
+    --not-when-fullscreen \
+    `# Don't lock when there's audio playing` \
+    --not-when-audio \
+    `# Lock after 60 more seconds` \
+    --timer 60 \
+      'dot lock' \
+      '' \
+    `# Finally, suspend an hour after it locks` \
+    --timer 3600 \
+      'systemctl suspend' \
+      ''
+}
+
 switch_wallpaper() {
   feh --randomize --bg-fill --no-fehbg ~/wallpapers/*
 }
@@ -98,6 +114,7 @@ Dotfile CLI.
 Usage: dot [command] [args]
 
 Commands:
+  autolock         Starts autolock daemon
   lock             Lock screen
   rofi_i3_hotkeys  Show i3 hotkeys via rofi
   rofi_kill        Kill a running process via rofi
@@ -119,6 +136,9 @@ Examples:
 case "$1" in
 lock)
   lock
+  ;;
+autolock)
+  autolock
   ;;
 switch_headphone)
   switch_headphone
