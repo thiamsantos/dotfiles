@@ -281,6 +281,3 @@ bindsym $mod+o exec 1password --quick-access
 
 # redshift
 exec_always flock -w 0 /tmp/redshift.lock -c "redshift -c ~/.config/redshift/redshift.conf"
-
-# emacs
-exec_always flock -w 0 /tmp/emacs-daemon.lock -c "/usr/bin/emacs --daemon"
