@@ -223,7 +223,7 @@ assign [class="(?i)firefox"] $ws1
 assign [class="(?i)zoom"] $ws9
 for_window [title="^zoom$"] floating enable
 assign [class="(?i)spotify"] $ws10
-for_window [class="(?i)spotify"] move container to workspace $ws10
+for_window [class="(?i)spotify"] move container to workspace number $ws10
 
 # Automatic back-and-forth when switching to the current workspace
 workspace_auto_back_and_forth yes
@@ -237,7 +237,7 @@ bindsym $mod+BackSpace exec --no-startup-id dot rofi_systemctl
 
 # monitor
 exec dot setup_monitor
-workspace to output primary
+workspace $ws1 output primary
 
 # %%hotkey: Switch monitor (HDMI <-> Laptop) %%
 bindsym $mod+m exec dot switch_monitor
