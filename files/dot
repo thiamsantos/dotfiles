@@ -17,8 +17,8 @@ autolock() {
     --not-when-fullscreen \
     `# Don't lock when there's audio playing` \
     --not-when-audio \
-    `# Lock after 60 more seconds` \
-    --timer 60 \
+    `# Lock after 5 minutes` \
+    --timer 300 \
       'dot lock' \
       ''
 }
