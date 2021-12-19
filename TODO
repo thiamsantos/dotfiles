@@ -3,7 +3,7 @@
   - apt install libdbus-1-dev libpulse-dev libgoogle-perftools-dev libnotmuch-dev pandoc fonts-font-awesome
 - src compile https://github.com/dandavison/delta
 - src compile https://github.com/ogham/dog
-- Install fnm
+- asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 - Remove nvm
 - apt install 1password
 - ln files/dot to ~/bin

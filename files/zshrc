@@ -17,21 +17,17 @@ autoload -U add-zsh-hook
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
-# fnm
-export PATH="$PATH:$HOME/.fnm"
-eval "$(fnm env)"
-
 # terraform
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-# yvm
-export YVM_DIR=$HOME/.yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
 # asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# yvm
+export YVM_DIR=$HOME/.yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # go
 export GOPATH=$HOME/go
