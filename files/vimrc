@@ -15,8 +15,11 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
+Plug 'dracula/vim', {'as': 'dracula'}
 
 call plug#end()
+
+colorscheme dracula
 
 " Switch syntax highlighting on
 syntax on

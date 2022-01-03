@@ -4,7 +4,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 fpath+=$HOME/.zsh_functions
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dracula"
+
+source $HOME/src/dracula-zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
 plugins=(
   zsh-syntax-highlighting

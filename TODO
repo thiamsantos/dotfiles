@@ -24,3 +24,5 @@ apt install -y libpulse-dev libpulse0 libxcb-screensaver0 libxcb-screensaver0-de
 - git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 - ~/.emacs.d/bin/doom install
 - ~/.doom.d symlink
+
+How to install all themes of dracula

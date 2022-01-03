@@ -1,8 +1,5 @@
 {
-  "workbench.colorTheme": "Material Syntax - Dark",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#1e1e1e"
-  },
+  "workbench.colorTheme": "Dracula",
   "window.menuBarVisibility": "toggle",
   "editor.wordWrap": "on",
   "editor.rulers": [
@@ -33,7 +30,6 @@
   "editor.largeFileOptimizations": false,
   "files.trimTrailingWhitespace": true,
   "editor.tokenColorCustomizations": null,
-  "workbench.preferredDarkColorTheme": "Material Syntax - Dark",
   "workbench.editor.untitled.hint": "hidden",
   "redhat.telemetry.enabled": false
 }

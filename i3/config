@@ -205,17 +205,17 @@ bar {
     status_command i3status-rs ~/dotfiles/i3/i3status-rust/config.toml
 
     colors {
-        background #1c1f24
-        statusline #e5e5e5
-        separator #666666
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
 
         #                  border   bground text
-        focused_workspace  #51afef  #51afef #1c1f24
-        active_workspace   #1c1f24  #1c1f24 #e5e5e5
-        inactive_workspace #1c1f24  #1c1f24 #bbc2cf
-        urgent_workspace   #1c1f24  #ff6c6b #e5e5e5
-        binding_mode       #1c1f24  #ff6c6b #e5e5e5
-    }
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+   }
 }
 
 # default assignments
@@ -259,13 +259,14 @@ default_border pixel
 bindsym --release Print exec "mate-screenshot"
 
 # Colors
-#                       border  bground text    indicator child_border
-client.focused          #2257A0 #2257A0 #FFFFFF #2257A0   #363a3f
-client.focused_inactive #1c1f24 #1e2127 #e5e5e5 #1e2127   #1e2127
-client.unfocused        #1c1f24 #1c1f24 #363a3f #1c1f24   #1c1f24
-client.urgent           #1c1f24 #ff6c6b #e5e5e5 #ff6c6b   #ff6c6b
-client.placeholder      #1c1f24 #1c1f24 #e5e5e5 #1c1f24   #1c1f24
-client.background       #e5e5e5
+#
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
 
 # hides borders on workspaces with only one window visible
 hide_edge_borders smart
