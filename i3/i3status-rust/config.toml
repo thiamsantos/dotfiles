@@ -35,11 +35,11 @@ format = "XM3"
 block = "battery"
 format = "{percentage}"
 
-[[block]]
-block = "battery"
-driver = "upower"
-device = "hidpp_battery_0"
-format = "Mouse {percentage}"
+# [[block]]
+# block = "battery"
+# driver = "upower"
+# device = "hidpp_battery_0"
+# format = "Mouse {percentage}"
 
 [[block]]
 block = "custom"
