@@ -40,6 +40,15 @@
 
 (setq projectile-project-search-path '(("~/dev" . 3)))
 
+;; Remove sourcemap from magit-todos scans
+(setq magit-todos-exclude-globs '("*.map"))
+
+(setq +workspaces-switch-project-function
+      (lambda (dir)
+        (if (file-exists-p "README.md")
+            (find-file (expand-file-name "README.md" dir))
+          (doom-project-find-file dir))))
+
 (use-package! magit-todos :after magit :config (magit-todos-mode))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
