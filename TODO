@@ -26,3 +26,4 @@ apt install -y libpulse-dev libpulse0 libxcb-screensaver0 libxcb-screensaver0-de
 - ~/.doom.d symlink
 
 How to install all themes of dracula
+- install logseq and ferdi via ansible
