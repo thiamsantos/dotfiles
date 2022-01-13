@@ -73,6 +73,7 @@ cursor:
   style:
     shape: Block
     blinking: Always
+  blink_interval: 200
 
 key_bindings:
   #- { key: Paste,                                       action: Paste          }
