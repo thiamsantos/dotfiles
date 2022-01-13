@@ -128,4 +128,10 @@ decrypt_value() {
   echo 'Value copied to clipboard!'
 }
 
+genpasswd() {
+  local size=${1:-64}
+
+  strings /dev/urandom | grep -o '[[:alnum:]]' | head -n $size | tr -d '\n'
+}
+
 . $HOME/.ham/completion/bash/_ham
