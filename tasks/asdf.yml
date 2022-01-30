@@ -66,6 +66,12 @@
   args:
     creates: "{{ ansible_env.HOME }}/.asdf/plugins/ruby"
 
+- name: install asdf nodejs
+  become: no
+  command: "{{ ansible_env.HOME }}/.asdf/bin/asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+  args:
+    creates: "{{ ansible_env.HOME }}/.asdf/plugins/nodejs"
+
 - name: Setup asdf configuration
   become: no
   file:

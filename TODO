@@ -1,16 +1,10 @@
 - src compile https://github.com/davatorium/rofi
 - src compile https://github.com/greshake/i3status-rust
   - apt install libdbus-1-dev libpulse-dev libgoogle-perftools-dev libnotmuch-dev pandoc fonts-font-awesome
-- src compile https://github.com/dandavison/delta
-- src compile https://github.com/ogham/dog
-- asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-- Remove nvm
 - apt install 1password
 - ln files/dot to ~/bin
 - git clone https://github.com/dunst-project/dunst && compile
 - git clone https://github.com/greshake/i3status-rust && compile && apt install libdbus-1-dev libpulse-dev libsensors-dev libnotmuch-dev pando
-- git clone https://github.com/ogham/dog && compile
-- git clone https://github.com/dandavison/delta && compile
 - git clone https://github.com/davatorium/rofi && compile
 
 https://gitlab.com/jD91mZM2/xidlehook
