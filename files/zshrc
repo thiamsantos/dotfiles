@@ -135,3 +135,4 @@ genpasswd() {
 }
 
 . $HOME/.ham/completion/bash/_ham
+. $HOME/dotfiles/files/elixir_autocomplete.bash
