@@ -103,6 +103,11 @@ rofi_kill() {
   fi
 }
 
+rofi_todoist_quick_add() {
+  content="$(rofi -dmenu -l 0 -mesg 'Enter new task')"
+  "$HOME/go/bin/todoist" add -d today "$(echo $content)" && notify-send 'Task sucessfully added!'
+}
+
 dot_help() {
   echo "
 Dotfile CLI.
@@ -110,16 +115,17 @@ Dotfile CLI.
 Usage: dot [command] [args]
 
 Commands:
-  autolock         Starts autolock daemon
-  lock             Lock screen
-  rofi_i3_hotkeys  Show i3 hotkeys via rofi
-  rofi_kill        Kill a running process via rofi
-  rofi_systemctl   Lock, reboot, shutdown via rofi
-  setup_monitor    Enable HDMI and turn off laptop screen
-  switch_headphone Connect headphone
-  switch_monior    Switch between HDMI and laptop screen
-  switch_wallpaper Switch the wallpaper
-  *                Help
+  autolock               Starts autolock daemon
+  lock                   Lock screen
+  rofi_i3_hotkeys        Show i3 hotkeys via rofi
+  rofi_kill              Kill a running process via rofi
+  rofi_systemctl         Lock, reboot, shutdown via rofi
+  rofi_todoist_quick_add Add new todoist task via rofi
+  setup_monitor          Enable HDMI and turn off laptop screen
+  switch_headphone       Connect headphone
+  switch_monior          Switch between HDMI and laptop screen
+  switch_wallpaper       Switch the wallpaper
+  *                      Help
 
 Examples:
   $ dot lock
@@ -156,6 +162,9 @@ rofi_i3_hotkeys)
   ;;
 rofi_kill)
   rofi_kill
+  ;;
+rofi_todoist_quick_add)
+  rofi_todoist_quick_add
   ;;
 *)
   dot_help

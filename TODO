@@ -21,3 +21,5 @@ apt install -y libpulse-dev libpulse0 libxcb-screensaver0 libxcb-screensaver0-de
 
 How to install all themes of dracula
 - install logseq and ferdi via ansible
+
+How tot install todoist cli https://github.com/sachaos/todoist
