@@ -50,6 +50,7 @@
           (doom-project-find-file dir))))
 
 (use-package! magit-todos :after magit :config (magit-todos-mode))
+(use-package! magit-todos :after magit :config (magit-delta-mode))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

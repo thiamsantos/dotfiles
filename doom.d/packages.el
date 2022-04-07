@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! magit-todos)
+(package! magit-delta)
