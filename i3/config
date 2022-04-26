@@ -111,6 +111,9 @@ bindsym $mod+Shift+space floating toggle
 # %%hotkey: Change focus between tiling / floating windows %%
 bindsym $mod+space focus mode_toggle
 
+# %%hotkey: Show clipboard history via rofi %%
+bindsym $mod+Shift+v exec dot rofi_clipboard_history
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -290,3 +293,6 @@ exec_always flock -w 0 /tmp/dropbox.lock -c "dropbox start"
 
 # flameshot
 exec_always flock -w 0 /tmp/flameshot.lock -c "flameshot"
+
+# greenclip
+exec_always flock -w 0 /tmp/greenclip.lock -c "greenclip daemon"

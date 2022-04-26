@@ -108,6 +108,10 @@ rofi_todoist_quick_add() {
   "$HOME/go/bin/todoist" add -d today "$(echo $content)" && notify-send 'Task sucessfully added!'
 }
 
+rofi_clipboard_history() {
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+}
+
 dot_help() {
   echo "
 Dotfile CLI.
@@ -118,6 +122,7 @@ Commands:
   autolock               Starts autolock daemon
   lock                   Lock screen
   rofi_i3_hotkeys        Show i3 hotkeys via rofi
+  rofi_clipboard_history Show clipboard history via rofi
   rofi_kill              Kill a running process via rofi
   rofi_systemctl         Lock, reboot, shutdown via rofi
   rofi_todoist_quick_add Add new todoist task via rofi
@@ -165,6 +170,9 @@ rofi_kill)
   ;;
 rofi_todoist_quick_add)
   rofi_todoist_quick_add
+  ;;
+rofi_clipboard_history)
+  rofi_clipboard_history
   ;;
 *)
   dot_help
