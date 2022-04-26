@@ -258,7 +258,7 @@ for_window [window_role="task_dialog"] floating enable
 default_border pixel
 
 # screenshot
-bindsym --release Print exec "mate-screenshot"
+bindsym --release Print exec "flameshot gui"
 
 # Colors
 #
@@ -287,3 +287,6 @@ exec_always flock -w 0 /tmp/redshift.lock -c "redshift -c ~/.config/redshift/red
 
 # dropbox
 exec_always flock -w 0 /tmp/dropbox.lock -c "dropbox start"
+
+# flameshot
+exec_always flock -w 0 /tmp/flameshot.lock -c "flameshot"
