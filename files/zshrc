@@ -57,6 +57,9 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # aliases
 alias ga="git add"
 alias gap="git add -p"
