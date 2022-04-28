@@ -52,6 +52,19 @@
 (use-package! magit-todos :after magit :config (magit-todos-mode))
 (use-package! magit-todos :after magit :config (magit-delta-mode))
 
+(map! "C-s" #'swiper)
+
+(map! :after terraform-mode
+      :localleader
+      :map terraform-mode-map
+      :desc "terraform format" "f" #'terraform-format-buffer)
+
+(map! :after elixir-mode
+      :localleader
+      :map elixir-mode-map
+      :prefix ("t" . "test")
+      "u" #'exunit-verify-all-in-umbrella)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
