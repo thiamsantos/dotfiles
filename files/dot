@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -59,7 +59,7 @@ switch_headphone() {
 }
 
 rofi_systemctl() {
-  chosen=$(echo "[Cancel]\nLock\nLogout\nSuspend\nHibernate\nReboot\nShutdown" | rofi -dmenu -i)
+  chosen=$(echo "[Cancel]|Lock|Logout|Suspend|Hibernate|Reboot|Shutdown" | rofi -sep '|' -dmenu -i)
 
   case $chosen in
     Lock)
@@ -112,24 +112,46 @@ rofi_clipboard_history() {
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 }
 
+with_cache() {
+    dir="$HOME/.cache/with_cache/"
+    cmd="${@}"
+
+    mkdir -p $dir
+    find ~/.cache/with_cache/* -mtime +7 -exec rm -rf {} \;
+
+    cache_file=$dir$(echo $cmd | sed -e s/\ /-/g)
+    if [[ ! -f $cache_file ]]
+    then
+        eval $cmd > $cache_file
+    fi
+    cat $cache_file
+}
+
+clear_cache() {
+    dir="$HOME/.cache/with_cache/"
+    rm -rf $dir
+}
+
 dot_help() {
   echo "
-Dotfile CLI.
+Dotfiles CLI.
 
 Usage: dot [command] [args]
 
 Commands:
   autolock               Starts autolock daemon
+  clear_cache            Clear command cache
   lock                   Lock screen
-  rofi_i3_hotkeys        Show i3 hotkeys via rofi
   rofi_clipboard_history Show clipboard history via rofi
+  rofi_i3_hotkeys        Show i3 hotkeys via rofi
   rofi_kill              Kill a running process via rofi
   rofi_systemctl         Lock, reboot, shutdown via rofi
   rofi_todoist_quick_add Add new todoist task via rofi
   setup_monitor          Enable HDMI and turn off laptop screen
   switch_headphone       Connect headphone
-  switch_monior          Switch between HDMI and laptop screen
+  switch_monitor         Switch between HDMI and laptop screen
   switch_wallpaper       Switch the wallpaper
+  with_cache             Cache output of command
   *                      Help
 
 Examples:
@@ -173,6 +195,12 @@ rofi_todoist_quick_add)
   ;;
 rofi_clipboard_history)
   rofi_clipboard_history
+  ;;
+with_cache)
+  with_cache "${@:2}"
+  ;;
+clear_cache)
+  clear_cache
   ;;
 *)
   dot_help
