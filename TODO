@@ -26,3 +26,7 @@ How to install all themes of dracula
 How tot install todoist cli https://github.com/sachaos/todoist
 
 - wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+
+- direnv
+- https://github.com/Aloxaf/fzf-tab
+- https://github.com/zdharma-continuum/fast-syntax-highlighting

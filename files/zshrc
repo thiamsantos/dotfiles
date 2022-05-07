@@ -9,7 +9,8 @@ ZSH_THEME="dracula"
 source $HOME/src/dracula-zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
 plugins=(
-  zsh-syntax-highlighting
+  fzf-tab
+  fast-syntax-highlighting
   zsh-autosuggestions
 )
 
@@ -19,8 +20,9 @@ autoload -U add-zsh-hook
 # fzf
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
-# terraform
 autoload -U +X bashcompinit && bashcompinit
+
+# terraform
 complete -o nospace -C /usr/bin/terraform terraform
 
 # asdf
