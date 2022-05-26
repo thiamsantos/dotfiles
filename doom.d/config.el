@@ -52,7 +52,7 @@
 (use-package! magit-todos :after magit :config (magit-todos-mode))
 (use-package! magit-todos :after magit :config (magit-delta-mode))
 
-(map! "C-s" #'swiper)
+(map! :n "/" #'consult-line)
 
 (map! :after terraform-mode
       :localleader
