@@ -225,6 +225,7 @@ bar {
 assign [class="(?i)firefox"] $ws1
 assign [class="(?i)logseq"] $ws7
 assign [class="(?i)zoom"] $ws8
+assign [title="(?i)zoom"] $ws8
 for_window [title="^zoom$"] floating enable
 assign [class="(?i)ferdi"] $ws9
 assign [class="(?i)spotify"] $ws10
