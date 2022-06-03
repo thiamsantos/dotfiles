@@ -33,6 +33,10 @@ complete -o nospace -C /usr/bin/terraform terraform
 export YVM_DIR=$HOME/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
+# fly.io
+export FLYCTL_INSTALL="/home/thiago/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 # go
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
