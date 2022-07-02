@@ -132,6 +132,14 @@ clear_cache() {
     rm -rf $dir
 }
 
+rofi_emoji() {
+  rofi -show emoji -modi emoji
+}
+
+rofi_calc() {
+  rofi -show calc -modi calc -no-show-match -no-sort
+}
+
 dot_help() {
   echo "
 Dotfiles CLI.
@@ -144,6 +152,8 @@ Commands:
   lock                   Lock screen
   rofi_clipboard_history Show clipboard history via rofi
   rofi_i3_hotkeys        Show i3 hotkeys via rofi
+  rofi_calc              Live calculations in rofi
+  rofi_emoji             An emoji selector plugin for Rofi that copies the selected emoji to the clipboard.
   rofi_kill              Kill a running process via rofi
   rofi_systemctl         Lock, reboot, shutdown via rofi
   rofi_todoist_quick_add Add new todoist task via rofi
@@ -195,6 +205,12 @@ rofi_todoist_quick_add)
   ;;
 rofi_clipboard_history)
   rofi_clipboard_history
+  ;;
+rofi_calc)
+  rofi_calc
+  ;;
+rofi_emoji)
+  rofi_emoji
   ;;
 with_cache)
   with_cache "${@:2}"

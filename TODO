@@ -30,3 +30,13 @@ How tot install todoist cli https://github.com/sachaos/todoist
 - direnv
 - https://github.com/Aloxaf/fzf-tab
 - https://github.com/zdharma-continuum/fast-syntax-highlighting
+
+# rofi-emoji
+git clone https://github.com/Mange/rofi-emoji.git
+apt install rofi-dev autoconf automake libtool-bin libtool
+autoreconf -i && mkdir -p build && cd build && ../configure && make && sudo make install && cd ..
+
+# rofi-calc
+apt install rofi-dev qalc libtool
+git clone https://github.com/svenstaro/rofi-calc.git
+autoreconf -i && mkdir -p build && cd build && ../configure && make && sudo make install && cd ..
