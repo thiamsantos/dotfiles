@@ -40,3 +40,5 @@ autoreconf -i && mkdir -p build && cd build && ../configure && make && sudo make
 apt install rofi-dev qalc libtool
 git clone https://github.com/svenstaro/rofi-calc.git
 autoreconf -i && mkdir -p build && cd build && ../configure && make && sudo make install && cd ..
+
+# apt remove --purge libreoffice*
