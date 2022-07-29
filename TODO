@@ -1,7 +1,6 @@
 - src compile https://github.com/davatorium/rofi
 - src compile https://github.com/greshake/i3status-rust
   - apt install libdbus-1-dev libpulse-dev libgoogle-perftools-dev libnotmuch-dev pandoc fonts-font-awesome
-- apt install 1password
 - ln files/dot to ~/bin
 - git clone https://github.com/dunst-project/dunst && compile
 - git clone https://github.com/greshake/i3status-rust && compile && apt install libdbus-1-dev libpulse-dev libsensors-dev libnotmuch-dev pando
@@ -21,13 +20,11 @@ apt install -y libpulse-dev libpulse0 libxcb-screensaver0 libxcb-screensaver0-de
 
 How to install all themes of dracula
 - install logseq and ferdi via ansible
-- install direnv flameshot
 
 How tot install todoist cli https://github.com/sachaos/todoist
 
 - wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
 
-- direnv
 - https://github.com/Aloxaf/fzf-tab
 - https://github.com/zdharma-continuum/fast-syntax-highlighting
 
@@ -42,3 +39,5 @@ git clone https://github.com/svenstaro/rofi-calc.git
 autoreconf -i && mkdir -p build && cd build && ../configure && make && sudo make install && cd ..
 
 # apt remove --purge libreoffice*
+
+# install dracula

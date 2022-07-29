@@ -11,22 +11,22 @@
     go_version_target: "go version go1.8.1 linux/amd64"
     go_download_location: "https://golang.org/dl/{{ go_tarball }}"
   tasks:
-    - include: tasks/base.yml
+    - include: tasks/base.yml # done
     - include: tasks/spotify.yml
     - include: tasks/chrome.yml
     - include: tasks/zoom.yml
-    - include: tasks/asdf.yml
-    - include: tasks/node.yml
-    - include: tasks/rust.yml
+    - include: tasks/asdf.yml # done
+    - include: tasks/node.yml # done
+    - include: tasks/rust.yml # done
     - include: tasks/golang.yml
     - include: tasks/docker.yml
-    - include: tasks/zsh.yml
-    - include: tasks/vim.yml
+    - include: tasks/zsh.yml # done
+    - include: tasks/vim.yml # done
     - include: tasks/vscode.yml
-    - include: tasks/postgres.yml
+    - include: tasks/postgres.yml # done
     - include: tasks/apt.yml
-    - include: tasks/redshift.yml
+    - include: tasks/redshift.yml # done
     - include: tasks/alacritty.yml
     - include: tasks/terraform.yml
-    - include: tasks/awscli.yml
-    - include: tasks/i3.yml
+    - include: tasks/awscli.yml # done
+    - include: tasks/i3.yml # done
