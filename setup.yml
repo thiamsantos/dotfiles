@@ -12,9 +12,9 @@
     go_download_location: "https://golang.org/dl/{{ go_tarball }}"
   tasks:
     - include: tasks/base.yml # done
-    - include: tasks/spotify.yml
-    - include: tasks/chrome.yml
-    - include: tasks/zoom.yml
+    - include: tasks/spotify.yml # done
+    - include: tasks/chrome.yml # done
+    - include: tasks/zoom.yml # done
     - include: tasks/asdf.yml # done
     - include: tasks/node.yml # done
     - include: tasks/rust.yml # done

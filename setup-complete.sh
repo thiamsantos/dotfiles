@@ -126,6 +126,7 @@ setup_asdf() {
 }
 
 setup_node() {
+    # TODO: chown config folder
     if ! [ -x "$(command -v node)" ]
     then
         asdf install nodejs 16.14.0
@@ -224,8 +225,66 @@ setup_awscli() {
     fi
 }
 
+setup_spotify() {
+    curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
+
+    spotify_source="/etc/apt/sources.list.d/spotify.list"
+
+    if [ ! -e $spotify_source ]
+    then
+        echo "deb http://repository.spotify.com stable non-free" | sudo tee $spotify_source
+        sudo apt-get update
+    fi
+
+    sudo apt-get install -y spotify-client
+}
+
+setup_chrome() {
+    curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+    chrome_source="/etc/apt/sources.list.d/google-chrome.list"
+
+    if [ ! -e $chrome_source ]
+    then
+        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $chrome_source
+        sudo apt-get update
+    fi
+
+    sudo apt-get install -y google-chrome-stable
+}
+
+setup_zoom() {
+    sudo apt-get install -y \
+       libglib2.0-0 \
+       libgstreamer-plugins-base1.0-0 \
+       libxcb-shape0 \
+       libxcb-shm0 \
+       libxcb-xfixes0 \
+       libxcb-randr0 \
+       libxcb-image0 \
+       libfontconfig1 \
+       libgl1-mesa-glx \
+       libxi6 \
+       libsm6 \
+       libxrender1 \
+       libpulse0 \
+       libxcomposite1 \
+       libxslt1.1 \
+       libsqlite3-0 \
+       libxcb-keysyms1 \
+       libxcb-xtest0
+
+    zoom_output="/tmp/zoom_amd64.deb"
+    wget -O $zoom_output https://zoom.us/client/latest/zoom_amd64.deb
+    sudo dpkg -i $zoom_output
+    rm -rf $zoom_output
+}
+
 # TODO: setup dotfiles folder
 sudo apt-get update
+# sudo apt-get upgrade
+sudo apt-get autoremove -y
+sudo apt-get autoclean
 setup_base
 setup_asdf
 setup_python
@@ -237,7 +296,9 @@ setup_zsh
 setup_i3
 setup_redshift
 setup_awscli
-
+setup_spotify
+setup_chrome
+setup_zoom
 
 # TODO: dracula
 # TODO: dropbox
@@ -247,8 +308,6 @@ setup_awscli
 # TODO: terraform
 # TODO: fly.io
 # TODO: golang
-# TODO: spotify
-# TODO: chrome
 # TODO: zoom
 # TODO: docker
 # TODO: vscode
