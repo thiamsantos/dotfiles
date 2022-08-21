@@ -27,7 +27,11 @@ setup_base() {
         1password
 
     mkdir -p "$HOME/bin"
+    sudo chown thiago:thiago "$HOME/bin"
     mkdir -p "$HOME/src"
+    sudo chown thiago:thiago "$HOME/src"
+    mkdir -p "$HOME/.config"
+    sudo chown thiago:thiago "$HOME/.config"
 
     # TODO: set permantently fs.inotify.max_user_watches = 524288 on /etc/sysctl.conf
 }
@@ -126,7 +130,6 @@ setup_asdf() {
 }
 
 setup_node() {
-    # TODO: chown config folder
     if ! [ -x "$(command -v node)" ]
     then
         asdf install nodejs 16.14.0
@@ -150,26 +153,53 @@ setup_zsh() {
     sudo apt-get install -y zsh
 
     mkdir -p "$HOME/.zsh_functions"
+    mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+    mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
 
     if [ ! -d "$HOME/.oh-my-zsh" ]
     then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
 
-    # TODO: https://github.com/zdharma-continuum/fast-syntax-highlighting
-    # TODO: https://github.com/Aloxaf/fzf-tab
-    # TODO: $HOME/src/dracula-zsh-syntax-highlighting/zsh-syntax-highlighting.sh
-
     zsh_autosuggestions_folder="$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
     if [ ! -d "$zsh_autosuggestions_folder" ]
     then
-        git clone https://github.com/zsh-users/zsh-autosuggestions $zsh_autosuggestions_folder$
+        git clone https://github.com/zsh-users/zsh-autosuggestions $zsh_autosuggestions_folder
+    fi
+
+    zsh_fzf_tab="$HOME/.oh-my-zsh/custom/plugins/fzf-tab"
+
+    if [ ! -d "$zsh_fzf_tab" ]
+    then
+        git clone https://github.com/Aloxaf/fzf-tab $zsh_fzf_tab
+    fi
+
+    zsh_fast_syntax_highlighting="$HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting"
+
+    if [ ! -d "$zsh_fast_syntax_highlighting" ]
+    then
+        git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git $zsh_fast_syntax_highlighting
+    fi
+
+    dracula_theme="$HOME/src/dracula-zsh-theme"
+
+    if [ ! -d "$dracula_theme" ]
+    then
+        git clone https://github.com/dracula/zsh.git $dracula_theme
+        ln -s "$dracula_theme/dracula.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/dracula.zsh-theme"
+    fi
+
+    dracula_highlighting="$HOME/src/dracula-zsh-syntax-highlighting"
+
+    if [ ! -d "$dracula_highlighting" ]
+    then
+        git clone https://github.com/dracula/zsh-syntax-highlighting.git $dracula_highlighting
     fi
 
     ln -sf "$HOME/dotfiles/files/zshrc" "$HOME/.zshrc"
 
-    # TODO: set zsh as default shell
+    sudo usermod --shell /bin/zsh $USER
 }
 
 setup_postgres() {
@@ -280,6 +310,50 @@ setup_zoom() {
     rm -rf $zoom_output
 }
 
+setup_docker() {
+    sudo apt-get purge -y \
+        docker \
+        docker-engine \
+        docker.io \
+        containerd \
+        runc
+
+    curl -sS https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+
+    docker_source="/etc/apt/sources.list.d/docker.list"
+
+    if [ ! -e $docker_source ]
+    then
+        echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" | sudo tee $docker_source
+        sudo apt-get update
+    fi
+
+    sudo apt-get install -y \
+        docker-ce \
+        docker-ce-cli \
+        containerd.io \
+        docker-compose-plugin
+
+    sudo groupadd -f docker
+    sudo usermod -aG docker $USER
+}
+
+setup_terraform() {
+    curl -sS https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+    terraform_source="/etc/apt/sources.list.d/terraform.list"
+
+    if [ ! -e $terraform_source ]
+    then
+        echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" | sudo tee $terraform_source
+        sudo apt-get update
+    fi
+
+    sudo apt-get install -y terraform
+}
+
+# TODO: bash formatter and linter
 # TODO: setup dotfiles folder
 sudo apt-get update
 # sudo apt-get upgrade
@@ -298,17 +372,15 @@ setup_redshift
 setup_awscli
 setup_spotify
 setup_chrome
-setup_zoom
+# setup_zoom
+setup_docker
+setup_terraform
 
-# TODO: dracula
 # TODO: dropbox
 # TODO: logseq
 # TODO: alacritty
 # TODO: doom emacs
-# TODO: terraform
 # TODO: fly.io
 # TODO: golang
-# TODO: zoom
-# TODO: docker
 # TODO: vscode
 # TODO: ln all dotfiles
