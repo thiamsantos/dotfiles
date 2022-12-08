@@ -51,3 +51,4 @@
 
 (package! magit-todos)
 (package! magit-delta)
+(package! string-inflection)
