@@ -105,7 +105,15 @@ rofi_kill() {
 
 rofi_todoist_quick_add() {
   content="$(rofi -dmenu -l 0 -mesg 'Enter new task')"
-  "$HOME/go/bin/todoist" add -d today "$(echo $content)" && notify-send 'Task sucessfully added!'
+  token="$(cat ~/.config/todoist/config.json | jq -r '.token')"
+  body=$(jq -n --arg content "$content" '{content: $content, due_string: "today", due_lang: "en"}')
+
+  curl "https://api.todoist.com/rest/v2/tasks" \
+    -X POST \
+    --data "$body" \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)" \
+    -H "Authorization: Bearer $token" && notify-send 'Task sucessfully added!'
 }
 
 rofi_clipboard_history() {

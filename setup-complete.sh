@@ -231,7 +231,6 @@ setup_i3() {
     # TODO: setup all config files i3
     # TODO: xidlehook
     # TODO: feh
-    # TODO: todoist
     # TODO: greenclip
     # TODO: rofi
     # TODO: rofi-emoji
@@ -376,6 +375,7 @@ setup_chrome
 setup_docker
 setup_terraform
 
+# TODO: accept argument to run only one dep
 # TODO: dropbox
 # TODO: logseq
 # TODO: alacritty
