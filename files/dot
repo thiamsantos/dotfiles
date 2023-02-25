@@ -113,7 +113,7 @@ rofi_todoist_quick_add() {
     --data "$body" \
     -H "Content-Type: application/json" \
     -H "X-Request-Id: $(uuidgen)" \
-    -H "Authorization: Bearer $token" && notify-send 'Task sucessfully added!'
+    -H "Authorization: Bearer $token" && notify-send 'Task successfully added!'
 }
 
 rofi_clipboard_history() {
