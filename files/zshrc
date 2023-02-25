@@ -78,7 +78,6 @@ alias gp="git push origin HEAD"
 alias gpf="git push origin HEAD --force-with-lease"
 alias gb="git checkout -b"
 alias gmb="git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
-alias gs="git status"
 alias gcb="git rev-parse --abbrev-ref HEAD"
 
 gsup() {
