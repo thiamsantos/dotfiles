@@ -237,7 +237,6 @@ setup_i3() {
     # TODO: rofi-calc
     # TODO: i3status-rs
     # TODO: dunst
-    #
 }
 
 setup_awscli() {
@@ -352,6 +351,17 @@ setup_terraform() {
     sudo apt-get install -y terraform
 }
 
+setup_dropbox() {
+    sudo apt-get install -y dropbox
+}
+
+setup_logseq() {
+    download_output="/tmp/Logseq-linux-x64-0.8.17.zip"
+    wget https://github.com/logseq/logseq/releases/download/0.8.17/Logseq-linux-x64-0.8.17.zip -O $download_output
+    unzip -fo $download_output -d "$HOME/bin"
+    ln -sf "$HOME/dotfiles/files/logseq.desktop" "$HOME/.local/share/applications/logseq.desktop"
+}
+
 # TODO: bash formatter and linter
 # TODO: setup dotfiles folder
 sudo apt-get update
@@ -374,10 +384,10 @@ setup_chrome
 # setup_zoom
 setup_docker
 setup_terraform
+setup_dropbox
+setup_logseq
 
 # TODO: accept argument to run only one dep
-# TODO: dropbox
-# TODO: logseq
 # TODO: alacritty
 # TODO: doom emacs
 # TODO: fly.io
