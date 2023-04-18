@@ -101,7 +101,6 @@ grsync() {
 alias xclip="xclip -selection c"
 alias mt="mix format && mix test && mix credo"
 alias swapclear="sudo swapoff -a && sudo swapon -a"
-alias awslogs='aws logs tail $(aws logs describe-log-groups | jq -r ".logGroups[].logGroupName" | fzf) --follow'
 
 encrypt_value() {
   echo -n "Enter value: "

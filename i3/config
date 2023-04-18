@@ -246,7 +246,7 @@ exec dot setup_monitor
 workspace $ws1 output primary
 
 # %%hotkey: Switch monitor (HDMI <-> Laptop) %%
-bindsym $mod+m exec dot switch_monitor
+bindsym $mod+Shift+m exec dot switch_monitor
 
 # %%hotkey: Switch wallpaper %%
 bindsym $mod+s exec dot switch_wallpaper
