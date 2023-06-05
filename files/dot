@@ -48,7 +48,7 @@ switch_monitor() {
 }
 
 switch_headphone() {
-  device="38:18:4C:2B:F5:A8"
+  device="AC:80:0A:0D:DC:3B"
 
   if bluetoothctl info $device | grep "Connected: yes"
   then

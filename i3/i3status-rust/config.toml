@@ -28,8 +28,8 @@ format_swap = "{swap_used_percents}"
 
 [[block]]
 block = "bluetooth"
-mac = "38:18:4C:2B:F5:A8"
-format = "XM3"
+mac = "AC:80:0A:0D:DC:3B"
+format = "XM5"
 
 [[block]]
 block = "battery"
