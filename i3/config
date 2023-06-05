@@ -227,7 +227,7 @@ assign [class="(?i)logseq"] $ws7
 assign [class="(?i)zoom"] $ws8
 assign [title="(?i)zoom"] $ws8
 for_window [title="^zoom$"] floating enable
-assign [class="(?i)ferdi"] $ws9
+assign [class="(?i)ferdium"] $ws9
 assign [class="(?i)spotify"] $ws10
 for_window [class="(?i)spotify"] move container to workspace number $ws10
 
