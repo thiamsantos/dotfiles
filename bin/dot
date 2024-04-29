@@ -99,7 +99,7 @@ rofi_kill() {
   then
     return 0
   else
-    SUDO_ASKPASS="$HOME/dotfiles/files/rofi-ask-password.sh" sudo -A kill -9 "$pid"
+    SUDO_ASKPASS=rofi-ask-password.sh sudo -A kill -9 "$pid"
   fi
 }
 

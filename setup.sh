@@ -20,6 +20,7 @@ mkdir -p "$HOME/.config/rofi"
 mkdir -p "$HOME/.config/redshift"
 mkdir -p "$HOME/.config/alacritty"
 mkdir -p "$HOME/.config/i3status-rust"
+mkdir -p "$HOME/.config/i3"
 mkdir -p "$HOME/.config/dunst"
 mkdir -p "$HOME/.zsh_functions"
 mkdir -p "$HOME/.zsh_cache/completions"
@@ -45,6 +46,7 @@ apt remove --purge --yes libreoffice*
 # TODO: fix adding apt
 # TODO: theme rofi não funciona
 # TODO: dracula
+# https://draculatheme.com/vim
 # sudo add-apt-repository --yes ppa:kelleyk/emacs
 
 apt autoclean
@@ -328,6 +330,7 @@ stow --verbose --target="$HOME/.config/alacritty" alacritty
 stow --verbose --target="$HOME/.config/redshift" redshift
 stow --verbose --target="$HOME/.config/dunst" dunst
 stow --verbose --target="$HOME/.config/i3status-rust" i3status-rust
+stow --verbose --target="$HOME/.config/i3" i3
 stow --verbose --target="$HOME/.config" greenclip
 stow --verbose --target="$HOME/.ssh" ssh
 
