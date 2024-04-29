@@ -152,6 +152,7 @@ apt install -y \
     zsh
 
 
+# TODO: stop using flatpak
 flatpak install -y flathub org.ferdium.Ferdium
 flatpak install -y flathub us.zoom.Zoom
 flatpak install -y flathub com.spotify.Client
