@@ -205,7 +205,7 @@ bindsym $mod+r mode "resize"
 bar {
     font pango:Ubuntu Mono 14, FontAwesome 12
     position top
-    status_command i3status-rs ~/dotfiles/i3/i3status-rust/config.toml
+    status_command i3status-rs
 
     colors {
         background #282A36

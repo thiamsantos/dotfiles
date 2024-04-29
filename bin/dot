@@ -1,0 +1,260 @@
+#!/usr/bin/env bash
+
+set -e
+
+lock() {
+  img=/tmp/i3lock.png
+
+  scrot -o $img
+  convert $img -scale 10% -scale 1000% $img
+
+  i3lock -e -i $img
+}
+
+autolock() {
+  xidlehook \
+    `# Don't lock when there's a fullscreen application` \
+    --not-when-fullscreen \
+    `# Don't lock when there's audio playing` \
+    --not-when-audio \
+    `# Lock after 5 minutes` \
+    --timer 300 \
+      'dot lock' \
+      ''
+}
+
+switch_wallpaper() {
+  feh --randomize --bg-fill --no-fehbg ~/wallpapers/*
+}
+
+setup_monitor() {
+  if xrandr | grep "HDMI-1 connected"
+  then
+    xrandr --output HDMI-1 --primary --auto --output eDP-1 --off
+  fi
+
+  switch_wallpaper
+}
+
+switch_monitor() {
+  if xrandr | grep "HDMI-1 connected primary"
+  then
+    xrandr --output eDP-1 --primary --auto --output HDMI-1 --off
+  else
+    xrandr --output HDMI-1 --primary --auto --output eDP-1 --off
+  fi
+
+  switch_wallpaper
+}
+
+switch_headphone() {
+  device="AC:80:0A:0D:DC:3B"
+
+  if bluetoothctl info $device | grep "Connected: yes"
+  then
+    bluetoothctl disconnect $device
+  else
+    bluetoothctl connect $device
+  fi
+}
+
+rofi_systemctl() {
+  chosen=$(echo "[Cancel]|Lock|Logout|Suspend|Hibernate|Reboot|Shutdown" | rofi -sep '|' -dmenu -i)
+
+  case $chosen in
+    Lock)
+      lock
+      ;;
+    Logout)
+      i3-msg exit
+      ;;
+    Suspend)
+      lock && systemctl suspend
+      ;;
+    Hibernate)
+      lock && systemctl suspend
+      ;;
+    Reboot)
+      systemctl reboot
+      ;;
+    Shutdown)
+      systemctl poweroff -i
+      ;;
+    *)
+      exit 0
+      ;;
+  esac
+}
+
+rofi_i3_hotkeys() {
+  rofi-i3-hotkeys
+}
+
+rofi_kill() {
+  all_pids="$(ps exa)"
+  pid_line=$( (echo "${all_pids}")  | rofi -dmenu -i -p "Kill process")
+  pid=$(echo "$pid_line" | awk '{print $1}')
+
+  if [ -z "$pid" -o "$pid" = "PID" ]
+  then
+    return 0
+  else
+    SUDO_ASKPASS="$HOME/dotfiles/files/rofi-ask-password.sh" sudo -A kill -9 "$pid"
+  fi
+}
+
+rofi_todoist_quick_add() {
+  content="$(rofi -dmenu -l 0 -mesg 'Enter new task')"
+  token="$(cat ~/.config/todoist/config.json | jq -r '.token')"
+  body=$(jq -n --arg content "$content" '{content: $content, due_string: "today", due_lang: "en"}')
+
+  curl "https://api.todoist.com/rest/v2/tasks" \
+    -X POST \
+    --data "$body" \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)" \
+    -H "Authorization: Bearer $token" && notify-send 'Task successfully added!'
+}
+
+rofi_clipboard_history() {
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+}
+
+with_cache() {
+    dir="$HOME/.cache/with_cache/"
+    cmd="${@}"
+
+    mkdir -p $dir
+    find $dir -type f -mtime +7 -exec rm -rf {} \;
+
+    cache_file=$dir$(echo $cmd | sed -e s/\ /-/g)
+    if [[ ! -f $cache_file ]]
+    then
+        eval $cmd > $cache_file
+    fi
+    cat $cache_file
+}
+
+clear_cache() {
+    dir="$HOME/.cache/with_cache/"
+    rm -rf $dir
+}
+
+clear_disk() {
+  before=$(df --total $HOME --output=avail | tail -n1)
+
+  echo "[dot] cleaning cache"
+  rm -rfv "$HOME/.cache"
+
+  echo "[dot] cleaning systemd journal"
+  sudo journalctl --vacuum-time=3d
+
+  echo "[dot] cleaning apt"
+  sudo apt autoremove
+  sudo apt-get clean
+
+  echo "[dot] cleaning docker"
+  for c in $(docker container ls -aq)
+  do
+    docker container stop $c
+  done
+
+  for i in $(docker images -aq)
+  do
+    docker rmi -f $i
+  done
+
+  docker system prune -af --volumes
+
+  after=$(df --total $HOME --output=avail | tail -n1)
+
+  total=$(expr $after - $before | numfmt --to=iec)
+  echo "[dot] reclaimed $total"
+}
+
+dot_help() {
+  echo "
+Dotfiles CLI.
+
+Usage: dot [command] [args]
+
+Commands:
+  autolock               Starts autolock daemon
+  clear_disk             Clear disk files
+  clear_cache            Clear command cache
+  lock                   Lock screen
+  rofi_calc              Live calculations in rofi
+  rofi_clipboard_history Show clipboard history via rofi
+  rofi_emoji             An emoji selector plugin for Rofi that copies the selected emoji to the clipboard.
+  rofi_i3_hotkeys        Show i3 hotkeys via rofi
+  rofi_kill              Kill a running process via rofi
+  rofi_systemctl         Lock, reboot, shutdown via rofi
+  rofi_todoist_quick_add Add new todoist task via rofi
+  setup_monitor          Enable HDMI and turn off laptop screen
+  switch_headphone       Connect headphone
+  switch_monitor         Switch between HDMI and laptop screen
+  switch_wallpaper       Switch the wallpaper
+  with_cache             Cache output of command
+  *                      Help
+
+Examples:
+  $ dot lock
+  $ dot setup_monitor
+  $ dot rofi_systemctl
+"
+  exit 1
+}
+
+case "$1" in
+clear_disk)
+  clear_disk
+  ;;
+lock)
+  lock
+  ;;
+autolock)
+  autolock
+  ;;
+switch_headphone)
+  switch_headphone
+  ;;
+setup_monitor)
+  setup_monitor
+  ;;
+switch_monitor)
+  switch_monitor
+  ;;
+switch_wallpaper)
+  switch_wallpaper
+  ;;
+rofi_systemctl)
+  rofi_systemctl
+  ;;
+rofi_i3_hotkeys)
+  rofi_i3_hotkeys
+  ;;
+rofi_kill)
+  rofi_kill
+  ;;
+rofi_todoist_quick_add)
+  rofi_todoist_quick_add
+  ;;
+rofi_clipboard_history)
+  rofi_clipboard_history
+  ;;
+rofi_calc)
+  rofi_calc
+  ;;
+rofi_emoji)
+  rofi_emoji
+  ;;
+with_cache)
+  with_cache "${@:2}"
+  ;;
+clear_cache)
+  clear_cache
+  ;;
+*)
+  dot_help
+  ;;
+esac

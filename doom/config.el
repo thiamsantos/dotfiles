@@ -50,7 +50,7 @@
           (doom-project-find-file dir))))
 
 (use-package! magit-todos :after magit :config (magit-todos-mode))
-(use-package! magit-todos :after magit :config (magit-delta-mode))
+;; (use-package! magit-todos :after magit :config (magit-delta-mode))
 
 (map! :n "/" #'consult-line)
 

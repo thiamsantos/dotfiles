@@ -87,7 +87,7 @@ rofi_systemctl() {
 }
 
 rofi_i3_hotkeys() {
-  "$HOME"/dotfiles/files/rofi-i3-hotkeys.py
+  rofi-i3-hotkeys
 }
 
 rofi_kill() {
@@ -99,7 +99,7 @@ rofi_kill() {
   then
     return 0
   else
-    SUDO_ASKPASS="$HOME/dotfiles/files/rofi-ask-password.sh" sudo -A kill -9 "$pid"
+    SUDO_ASKPASS=rofi-ask-password sudo -A kill -9 "$pid"
   fi
 }
 
@@ -138,14 +138,6 @@ with_cache() {
 clear_cache() {
     dir="$HOME/.cache/with_cache/"
     rm -rf $dir
-}
-
-rofi_emoji() {
-  rofi -show emoji -modi emoji
-}
-
-rofi_calc() {
-  rofi -show calc -modi calc -no-show-match -no-sort
 }
 
 clear_disk() {
@@ -237,9 +229,6 @@ switch_wallpaper)
   ;;
 rofi_systemctl)
   rofi_systemctl
-  ;;
-rofi_i3_hotkeys)
-  rofi_i3_hotkeys
   ;;
 rofi_kill)
   rofi_kill
