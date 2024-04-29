@@ -65,6 +65,7 @@ apt install -y \
     cheese \
     cmake \
     compton \
+    compton \
     cowsay \
     curl \
     direnv \
@@ -80,6 +81,7 @@ apt install -y \
     git \
     groff \
     i3 \
+    imagemagick \
     imagemagick \
     inotify-tools \
     jq \
@@ -128,12 +130,14 @@ apt install -y \
     pandoc \
     pkg-config \
     playerctl \
+    playerctl \
     postgresql-client \
     python3 \
     python3-pip \
     python3-venv \
     redshift \
     rofi \
+    scrot \
     scrot \
     shellcheck \
     silversearcher-ag \
