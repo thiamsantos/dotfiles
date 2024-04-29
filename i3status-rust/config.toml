@@ -1,12 +1,13 @@
-icons = "awesome"
-theme = "/home/thiago/dotfiles/i3/i3status-rust/theme.toml"
+[icons]
+icons = "awesome4"
+
+[theme]
+theme = "/home/thiago/.config/i3status-rust/theme.toml"
 
 [[block]]
 block = "music"
+format = " $icon $title by $artist "
 player = "spotify"
-format = "{title} by {artist}"
-dynamic_width = true
-buttons = ["prev", "play", "next"]
 
 [[block]]
 block = "sound"
@@ -14,26 +15,29 @@ block = "sound"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}"
+format = " $icon $utilization "
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used_percents}"
+format = " $icon $mem_used ($mem_used_percents) "
 
 [[block]]
 block = "memory"
-display_type = "swap"
-format_swap = "{swap_used_percents}"
+format = " $icon_swap $swap_used ($swap_used_percents) "
 
 [[block]]
 block = "bluetooth"
 mac = "AC:80:0A:0D:DC:3B"
-format = "XM5"
+format = " $icon XM5 "
 
 [[block]]
 block = "battery"
-format = "{percentage}"
+device = "BAT0"
+
+[[block]]
+block = "battery"
+device = "hidpp_battery_0"
+
 
 [[block]]
 block = "custom"
@@ -43,4 +47,4 @@ command = "echo \"WEEK $(date '+%U')\""
 [[block]]
 block = "time"
 interval = 5
-format = "%a %d/%m %R"
+format = " $icon $timestamp.datetime(f:'%a %d/%m %R', l:pt_BR) "

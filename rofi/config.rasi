@@ -2,7 +2,7 @@ configuration {
     modi: "combi,window,drun,run";
     combi-modi: "window,drun,run";
 
-    show-icons:      true;
+    show-icons:      false;
     display-drun:    "";
     disable-history: false;
 }

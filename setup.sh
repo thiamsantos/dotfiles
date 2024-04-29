@@ -46,6 +46,9 @@ apt remove --purge --yes libreoffice*
 # TODO: fix adding apt
 # TODO: theme rofi não funciona
 # TODO: dracula
+# TODO: wallpapers
+# TODO: sqlite3
+# TODO: git-delta no magit
 # https://draculatheme.com/vim
 # sudo add-apt-repository --yes ppa:kelleyk/emacs
 
@@ -79,6 +82,7 @@ apt install -y \
     flameshot \
     flatpak \
     fop \
+    fonts-font-awesome \
     fzf \
     git \
     groff \
