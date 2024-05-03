@@ -6,7 +6,7 @@ theme = "/home/thiago/.config/i3status-rust/theme.toml"
 
 [[block]]
 block = "music"
-format = " $icon $title by $artist "
+format = " $icon {$title by $artist|} "
 player = "spotify"
 
 [[block]]
