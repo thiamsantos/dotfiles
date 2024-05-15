@@ -6,6 +6,8 @@ source $HOME/src/dracula-zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
 export ZSH_CACHE_DIR="$HOME/.zsh_cache"
 
+zstyle :omz:plugins:ssh-agent identities github
+
 antigen use oh-my-zsh
 
 antigen bundle aws
@@ -16,7 +18,7 @@ antigen bundle mix
 antigen bundle terraform
 antigen bundle rust
 antigen bundle yarn
-
+antigen bundle ssh-agent
 antigen bundle Aloxaf/fzf-tab
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions

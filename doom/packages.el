@@ -52,3 +52,4 @@
 (package! magit-todos)
 (package! magit-delta)
 (package! string-inflection)
+(package! ssh-agency)

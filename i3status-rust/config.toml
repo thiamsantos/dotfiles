@@ -35,11 +35,6 @@ block = "battery"
 device = "BAT0"
 
 [[block]]
-block = "battery"
-device = "hidpp_battery_0"
-
-
-[[block]]
 block = "custom"
 interval = "once"
 command = "echo \"WEEK $(date '+%U')\""

@@ -41,7 +41,7 @@
 (setq projectile-project-search-path '(("~/dev" . 3)))
 
 ;; Remove sourcemap from magit-todos scans
-(setq magit-todos-exclude-globs '("*.map"))
+(setq magit-todos-exclude-globs '("*.map" "*.json"))
 
 (setq +workspaces-switch-project-function
       (lambda (dir)
@@ -50,7 +50,7 @@
           (doom-project-find-file dir))))
 
 (use-package! magit-todos :after magit :config (magit-todos-mode))
-;; (use-package! magit-todos :after magit :config (magit-delta-mode))
+(use-package! magit-todos :after magit :config (magit-delta-mode))
 
 (map! :n "/" #'consult-line)
 
@@ -64,6 +64,11 @@
       :map elixir-mode-map
       :prefix ("t" . "test")
       "u" #'exunit-verify-all-in-umbrella)
+
+(map! :after elixir-mode
+      :localleader
+      :map elixir-mode-map
+      :desc "mix format" "f" #'elixir-format)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

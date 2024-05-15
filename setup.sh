@@ -31,6 +31,8 @@ sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
 curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
 sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg --yes
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg --yes
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
@@ -41,15 +43,6 @@ do
 done
 
 apt remove --purge --yes libreoffice*
-
-# TODO: sqlite3 no emacs
-# TODO: git-delta no magit
-# TODO: comandos elixir no emacs
-# TODO: install emacs29 with all options, maybe compiling from source
-# https://harryrschwartz.com/2022/12/08/how-i-build-emacs-from-source-on-debian
-
-# TODO: fix adding apt
-# sudo add-apt-repository --yes ppa:kelleyk/emacs
 
 apt autoclean
 apt autopurge
@@ -67,6 +60,7 @@ apt install -y \
     build-essential \
     ca-certificates \
     cheese \
+    chromium-browser \
     cmake \
     compton \
     compton \
@@ -75,7 +69,6 @@ apt install -y \
     direnv \
     dunst \
     editorconfig \
-    emacs28-nativecomp \
     fd-find \
     ffmpeg \
     flameshot \
@@ -145,6 +138,7 @@ apt install -y \
     scrot \
     shellcheck \
     silversearcher-ag \
+    spotify-client \
     stow \
     terraform \
     tidy \
@@ -158,15 +152,21 @@ apt install -y \
     xsltproc \
     zlib1g-dev \
     zsh
+# TODO: format
+sudo apt install --yes build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev libgnutls28-dev gcc-10 libgccjit-10-dev libjansson4 libjansson-dev
+
+
+sudo apt install -y autoconf make gcc texinfo libgtk-3-dev libxpm-dev \
+         libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev \
+              libjansson-dev libharfbuzz-dev libharfbuzz-bin imagemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev
+
+export CC="gcc-10"
+
 
 
 # TODO: stop using flatpak
 flatpak install -y flathub org.ferdium.Ferdium
 flatpak install -y flathub us.zoom.Zoom
-flatpak install -y flathub com.spotify.Client
-flatpak install -y flathub com.google.Chrome
-flatpak install -y flathub com.logseq.Logseq
-flatpak install -y flathub org.flameshot.Flameshot
 
 if [ ! -d "$HOME/.cargo/bin" ]
 then
@@ -177,6 +177,24 @@ fi
 
 rustup override set stable
 rustup update stable
+
+
+emacs_folder="$HOME/src/emacs"
+
+if [ ! -d "$emacs_folder" ]
+then
+    git clone --depth 1 --branch emacs-29.3 git://git.savannah.gnu.org/emacs.git $emacs_folder
+fi
+
+if ! [ -x "$(command -v emacs)" ]
+then
+    cd $emacs_folder
+    ./autogen.sh
+    ./configure --with-native-compilation --with-json
+    make -j$(nproc)
+    sudo make install
+    cd "$initial_folder"
+fi
 
 feh_folder="$HOME/src/feh"
 
@@ -394,4 +412,4 @@ pip3 install isort pipenv pytest nose
 
 npm -g install js-beautify stylelint
 
-ln -s "$HOME/dev/finbits/hammer/target/release/ham" "$HOME/bin/ham"
+ln -sf "$HOME/dev/finbits/hammer/target/release/ham" "$HOME/bin/ham"
