@@ -104,16 +104,23 @@ rofi_kill() {
 }
 
 rofi_todoist_quick_add() {
-  content="$(rofi -dmenu -l 0 -mesg 'Enter new task')"
-  token="$(cat ~/.config/todoist/config.json | jq -r '.token')"
-  body=$(jq -n --arg content "$content" '{content: $content, due_string: "today", due_lang: "en"}')
+  todoist_config_file="$HOME/.config/todoist/config.json"
 
-  curl "https://api.todoist.com/rest/v2/tasks" \
-    -X POST \
-    --data "$body" \
-    -H "Content-Type: application/json" \
-    -H "X-Request-Id: $(uuidgen)" \
-    -H "Authorization: Bearer $token" && notify-send 'Task successfully added!'
+  if [ ! -e $todoist_config_file ]
+  then
+    notify-send "Fail: Missing todoist file $todoist_config_file"
+  else
+    content="$(rofi -dmenu -l 0 -mesg 'Enter new task')"
+    token="$(cat ~/.config/todoist/config.json | jq -r '.token')"
+    body=$(jq -n --arg content "$content" '{content: $content, due_string: "today", due_lang: "en"}')
+
+    curl "https://api.todoist.com/rest/v2/tasks" \
+      -X POST \
+      --data "$body" \
+      -H "Content-Type: application/json" \
+      -H "X-Request-Id: $(uuidgen)" \
+      -H "Authorization: Bearer $token" && notify-send 'Task successfully added!'
+  fi
 }
 
 rofi_clipboard_history() {
