@@ -8,6 +8,7 @@ initial_folder="$(pwd)"
 
 export HOME="/home/thiago"
 export UBUNTU_CODENAME="jammy"
+export CC="gcc-10"
 
 mkdir -p "$HOME/.dotfiles"
 mkdir -p "$HOME/bin"
@@ -33,7 +34,6 @@ sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg --yes
 curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg --yes
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
@@ -41,6 +41,13 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 do
     sudo apt-get remove --yes $pkg
 done
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list
 
 apt remove --purge --yes libreoffice*
 
@@ -63,23 +70,28 @@ apt install -y \
     chromium-browser \
     cmake \
     compton \
-    compton \
+    containerd.io \
     cowsay \
     curl \
     direnv \
+    docker-buildx-plugin \
+    docker-ce \
+    docker-ce-cli \
+    docker-compose-plugin \
     dunst \
     editorconfig \
     fd-find \
     ffmpeg \
     flameshot \
     flatpak \
-    fop \
     fonts-font-awesome \
+    fop \
     fzf \
+    gcc \
+    gcc-10 \
     git \
     groff \
     i3 \
-    imagemagick \
     imagemagick \
     inotify-tools \
     jq \
@@ -89,11 +101,23 @@ apt install -y \
     libffi-dev \
     libfontconfig1-dev \
     libfreetype6-dev \
+    libgccjit-10-dev \
+    libgccjit0 \
     libgdbm-dev \
     libgdbm6 \
+    libgif-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
+    libgnutls28-dev \
+    libgtk-3-dev \
+    libgtk2.0-dev \
+    libharfbuzz-bin \
+    libharfbuzz-dev \
     libimlib2-dev \
+    libjansson-dev \
+    libjansson4 \
+    libjpeg-dev \
+    libmagickwand-dev \
     libncurses-dev \
     libncurses5-dev \
     libnotmuch-dev \
@@ -108,6 +132,8 @@ apt install -y \
     libssl-dev \
     libtest-command-perl \
     libtest-simple-perl \
+    libtiff-dev \
+    libtiff5-dev \
     libwxgtk3.0-gtk3-dev \
     libx11-dev \
     libxcb-screensaver0 \
@@ -118,16 +144,17 @@ apt install -y \
     libxinerama-dev \
     libxkbcommon-dev \
     libxml2-utils \
+    libxpm-dev \
     libxss-dev \
     libxss1 \
     libxt-dev \
     libyaml-dev \
     lxappearance \
     m4 \
+    make \
     openjdk-11-jdk \
     pandoc \
     pkg-config \
-    playerctl \
     playerctl \
     postgresql-client \
     python3 \
@@ -135,12 +162,12 @@ apt install -y \
     python3-venv \
     rofi \
     scrot \
-    scrot \
     shellcheck \
     silversearcher-ag \
     spotify-client \
     stow \
     terraform \
+    texinfo \
     tidy \
     unixodbc-dev \
     unzip \
@@ -148,21 +175,11 @@ apt install -y \
     vim-gtk \
     vlc \
     wget \
+    xaw3dg-dev \
     xclip \
     xsltproc \
     zlib1g-dev \
-    zsh
-# TODO: format
-sudo apt install --yes build-essential texinfo libx11-dev libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev libncurses-dev libgnutls28-dev gcc-10 libgccjit-10-dev libjansson4 libjansson-dev
-
-
-sudo apt install -y autoconf make gcc texinfo libgtk-3-dev libxpm-dev \
-         libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev \
-              libjansson-dev libharfbuzz-dev libharfbuzz-bin imagemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev
-
-export CC="gcc-10"
-
-
+    zsh \
 
 # TODO: stop using flatpak
 flatpak install -y flathub org.ferdium.Ferdium
@@ -177,7 +194,6 @@ fi
 
 rustup override set stable
 rustup update stable
-
 
 emacs_folder="$HOME/src/emacs"
 
@@ -317,15 +333,6 @@ then
     asdf global elixir 1.16.0-otp-26
 fi
 
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt update
-sudo apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo groupadd -f docker
 sudo usermod -aG docker "$USER"
 
@@ -353,7 +360,6 @@ stow --verbose --target="$HOME/.config/i3" i3
 stow --verbose --target="$HOME/.config" greenclip
 stow --verbose --target="$HOME/.ssh" ssh
 
-
 doom_emacs_folder="$HOME/.config/emacs"
 
 if [ ! -d "$doom_emacs_folder" ]
@@ -366,14 +372,12 @@ aws_download_folder="/tmp/awscliv2"
 
 if ! [ -x "$(command -v aws)" ]
 then
-
     mkdir -p $aws_download_folder
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$aws_download_folder/awscliv2.zip"
     unzip "$aws_download_folder/awscliv2.zip" -d $aws_download_folder
     $aws_download_folder/aws/install --bin-dir "$HOME/bin" --install-dir "$HOME/src/aws-cli"
     rm -rf $aws_download_folder
 fi
-
 
 sudo chsh -s /bin/zsh thiago
 
